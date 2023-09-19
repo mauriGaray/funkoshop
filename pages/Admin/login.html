@@ -12,7 +12,7 @@
         <picture>
           <a href=""
             ><img
-              src="../img/branding/logo_light_horizontal.svg"
+              src="../../img/branding/logo_light_horizontal.svg"
               alt="Iso logo de la marca FunkoShop"
           /></a>
         </picture>
@@ -22,7 +22,7 @@
           <li><a href="../login.html">LOGIN</a></li>
           <li>
             <a href="../cart.html"
-              ><img src="../img/icons/cart-icon.svg" alt="Icono del carro"
+              ><img src="../../img/icons/cart-icon.svg" alt="Icono del carro"
             /></a>
           </li>
         </ul>
@@ -30,72 +30,18 @@
     </header>
 
     <main>
-      <h1>CREAR NUEVO ITEM</h1>
+      <h1>INGRESAR A MI CUENTA</h1>
       <form action="submit">
-        <ul>
-          <li>
-            Categoría:
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
-          </li>
-          <li>
-            Licencia:
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
-          </li>
-        </ul>
-        <label for="productData">Nombre del producto:</label>
-        <input type="text" name="productData" />
-        <textarea
-          name="productData"
-          rows="5"
-          cols="33"
-          placeholder="Descripción del producto"></textarea>
-        <ul>
-          <li>
-            <label for="sku">SKU:</label> <input type="text" name="sku" />
-          </li>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" />
+        <label for="passwordr">Password:</label>
+        <input type="password" name="password" id="password" />
 
-          <li>
-            <label for="precio">Precio:</label>
-            <input type="text" name="precio" />
-          </li>
-          <li>
-            <label for="stock">Stock:</label> <input type="text" name="stock" />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <label for="descount">Descuento:</label>
-            <input
-              type="number"
-              id="descount"
-              name="descount"
-              min="0"
-              max="100"
-              placeholder="0%" />
-          </li>
-          <li>
-            Cuotas:
-            <select name="cuotas">
-              <option value="value1">3 cuotas sin interés</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
-          </li>
-        </ul>
-        <ul>
-          <li><label for="image">Imágenes:</label> <input type="file" /></li>
-        </ul>
-        <button type="submit" value="addProduct">Agregar producto</button>
-        <button type="reset" value="clean">Limpiar</button>
+        <button type="submit" value="login">Ingresar</button>
+        <input type="checkbox" name="remember" id="remember" />
+        <label for="remember">Recordarme</label>
       </form>
+      <a href="#"><h6>Olvidé mi contraseña</h6></a>
     </main>
 
     <footer>
@@ -109,7 +55,9 @@
           </ul>
 
           <picture>
-            <img src="../img/branding/isotype.svg" alt="Isotipo Funko Shop  " />
+            <img
+              src="../../img/branding/isotype.svg"
+              alt="Isotipo Funko Shop  " />
           </picture>
         </nav>
       </section>
