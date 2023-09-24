@@ -1,5 +1,52 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+
+:root {
+  /* Palette */
+  --primary-solid: rgb(255,51,51);
+  --primary-900: rgba(255,51,51,0.9);
+  --primary-500: rgba(255,51,51,0.5);
+  --primary-300: rgba(255,51,51,0.3);
+
+  --secondary-solid: rgb(29,132,181);
+  --secondary-900: rgba(29,132,181,0.9);
+  --secondary-500: rgba(29,132,181,0.5);
+  --secondary-300: rgba(29,132,181,0.3);
+
+  --dark-solid: rgb(31,31,31);
+  --dark-900: rgba(31,31,31,0.9);
+  --dark-500: rgba(31,31,31,0.5);
+  --dark-300: rgba(31,31,31,0.3);
+
+  --dark-bg-solid: #30343F;
+  --light-bg-solid: #fafaff;
+  --light-font-solid: #fff;
+
+  /* Typography */
+  --base-font: 'Inter', sans-serif;
+  --alternative-font: 'Raleway', sans-serif;
+
+  /* Font-sizes */
+  --font-display: 4.6em;
+  --font-jumbo: 3.8em;
+  --font-xlarge: 3em;
+  --font-large: 2.4em;
+  --font-medium: 1.8em;
+  --font-small: 1.6em;
+  --font-xsmall: 1.4em;
+
+  /* Spacings */
+  --spacing-128: 12.8em;
+  --spacing-68: 6.8em;
+  --spacing-36: 3.6em;
+  --spacing-28: 2.8em;
+  --spacing-24: 2.4em;
+  --spacing-20: 2em;
+  --spacing-16: 1.6em;
+  --spacing-12: 1.2em;
+  --spacing-8: 0.8em;
+}
+
 :root {
   /* variables*/
   --color-primario: yellow;
@@ -20,8 +67,10 @@ html {
 a {
   text-decoration: none;
   font-size: 2em;
+  font-family: inherit;
   color: inherit;
 }
+
 ul,
 ol {
   list-style-type: none;
@@ -30,12 +79,85 @@ ol {
 p {
   font-size: 1.8em;
 }
+
 header,
 footer {
-  font-family: "Raleway", sans-serif;
-  color: white;
+  font-family: var(--alternative-font);
+  color: var(--light-font-solid);
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+img{
+  width: 100%;
+}
+
+
+
+/* HEADER*/
+
+header {
+  background-color: var(--dark-bg-solid);
+  padding: var(--spacing-36);
+}
+
+.navbar {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  }
+
+.navbar__logo{
+  max-width: 300px;
+}
+
+.navbar__menu{
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-20);
+}
+
+.navbar__link{
+  font-size: var(--font-medium);
+  display: inline-block;
+  padding: var(--spacing-8) var(--spacing-16);
+  transition: background .3s ease-in-out;
+  position: relative;
+}
+
+.navbar__link:hover{
+  background-color: var(--primary-900);
+
+}
+
+.with-icon {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.with-submenu:hover .submenu{
+  display: block;
+}
+
+.submenu{
+  display: none;
+  width: 300px;
+  position: absolute;
+  background-color: var(--dark-bg-solid);
+  
+}
+
+.submenu__link{
+display: block;
+padding: var(--spacing-8) var(--spacing-16);
+}
+
+.submenu__link:hover{
+  background-color: var(--primary-900);
+  transition: background .3s ease-in-out;
 }
