@@ -51,10 +51,10 @@
       </nav>
     </header>
 
-    <main>
-      <h1>CREAR NUEVO ITEM</h1>
-      <form action="submit">
-        <ul>
+    <main class="container">
+      <form action="submit" class="create__form">
+        <ul class="create__form__ul">
+          <li><h1>CREAR NUEVO ITEM</h1></li>
           <li>
             Categoría:
             <select name="select">
@@ -62,8 +62,6 @@
               <option value="value2" selected>Value 2</option>
               <option value="value3">Value 3</option>
             </select>
-          </li>
-          <li>
             Licencia:
             <select name="select">
               <option value="value1">Value 1</option>
@@ -71,28 +69,25 @@
               <option value="value3">Value 3</option>
             </select>
           </li>
-        </ul>
-        <label for="productData">Nombre del producto:</label>
-        <input type="text" name="productData" />
-        <textarea
-          name="productData"
-          rows="5"
-          cols="33"
-          placeholder="Descripción del producto"></textarea>
-        <ul>
           <li>
-            <label for="sku">SKU:</label> <input type="text" name="sku" />
-          </li>
-
-          <li>
-            <label for="precio">Precio:</label>
-            <input type="text" name="precio" />
+            <label for="productData">Nombre del producto: </label>
+            <input type="text" name="productData" />
           </li>
           <li>
-            <label for="stock">Stock:</label> <input type="text" name="stock" />
+            <textarea
+              name="productData"
+              rows="12.2em"
+              cols="51.727em"
+              placeholder="Descripción del producto"></textarea>
           </li>
-        </ul>
-        <ul>
+          <li>
+            <label for="sku">SKU:</label> <input type="text" name="sku" /><label
+              for="precio"
+              >Precio:</label
+            >
+            <input type="text" name="precio" /><label for="stock">Stock:</label>
+            <input type="text" name="stock" />
+          </li>
           <li>
             <label for="descount">Descuento:</label>
             <input
@@ -102,8 +97,6 @@
               min="0"
               max="100"
               placeholder="0%" />
-          </li>
-          <li>
             Cuotas:
             <select name="cuotas">
               <option value="value1">3 cuotas sin interés</option>
@@ -111,12 +104,14 @@
               <option value="value3">Value 3</option>
             </select>
           </li>
-        </ul>
-        <ul>
           <li><label for="image">Imágenes:</label> <input type="file" /></li>
         </ul>
-        <button type="submit" value="addProduct">Agregar producto</button>
-        <button type="reset" value="clean">Limpiar</button>
+        <button class="create__form--gap" type="submit" value="addProduct">
+          Agregar producto
+        </button>
+        <button class="create__form--gap" type="reset" value="clean">
+          Limpiar
+        </button>
       </form>
     </main>
 
