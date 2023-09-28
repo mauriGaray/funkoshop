@@ -425,7 +425,7 @@ nav {
   background: #f33;
   color: #fff;
   margin-right: 2.13rem;
-  width: 12rem;
+  width: 14rem;
   height: 4rem;
   flex-shrink: 0;
   font-family: var(--base-font);
@@ -435,4 +435,13 @@ nav {
   line-height: normal;
   letter-spacing: 0.06rem;
   border: none;
+}
+/* Editar item */
+
+.editaritem__ul__li__img {
+  width: 9.375rem;
+  height: 9.375rem;
+  margin-right: 1.51rem;
+  border: none;
+  border-bottom: 1px solid #f33;
 }
