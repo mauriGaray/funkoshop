@@ -51,72 +51,113 @@
       </nav>
     </header>
 
-    <main>
-      <h1>CREAR NUEVO ITEM</h1>
-      <form action="submit">
-        <ul>
-          <li>
-            Categoría:
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
+    <main class="container">
+      <form action="submit" class="create__form">
+        <ul class="create__form__ul">
+          <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
+          <li
+            class="create__form__ul__li--typography create__form__ul__li__div">
+            <div>
+              Categoría:
+              <select name="select" class="create__form__ul--select">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+              </select>
+            </div>
+            <div>
+              Licencia:
+              <select name="select" class="create__form__ul--select">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+              </select>
+            </div>
           </li>
-          <li>
-            Licencia:
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
-          </li>
-        </ul>
-        <label for="productData">Nombre del producto:</label>
-        <input type="text" name="productData" />
-        <textarea
-          name="productData"
-          rows="5"
-          cols="33"
-          placeholder="Descripción del producto"></textarea>
-        <ul>
-          <li>
-            <label for="sku">SKU:</label> <input type="text" name="sku" />
-          </li>
-
-          <li>
-            <label for="precio">Precio:</label>
-            <input type="text" name="precio" />
-          </li>
-          <li>
-            <label for="stock">Stock:</label> <input type="text" name="stock" />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <label for="descount">Descuento:</label>
+          <li class="create__form__ul__li--typography">
+            <label for="productData">Nombre del producto: </label>
             <input
-              type="number"
-              id="descount"
-              name="descount"
-              min="0"
-              max="100"
-              placeholder="0%" />
+              type="text"
+              name="productData"
+              placeholder="Kakashi Hatake Shippuden Saga"
+              class="create__form--line" />
           </li>
-          <li>
-            Cuotas:
-            <select name="cuotas">
-              <option value="value1">3 cuotas sin interés</option>
-              <option value="value2" selected>Value 2</option>
-              <option value="value3">Value 3</option>
-            </select>
+          <li class="create__form__ul__li--typography">
+            <textarea
+              name="productData"
+              rows="12.2rem"
+              cols="69rem"
+              placeholder=" Descripción del producto"></textarea>
+          </li>
+          <li
+            class="create__form__ul__li--typography create__form__ul__li__div2">
+            <div>
+              <label for="sku">SKU:</label>
+              <input
+                size="9rem"
+                type="text"
+                name="sku"
+                placeholder="SSK111AB001"
+                class="create__form--line" />
+            </div>
+            <div>
+              <label for="precio">Precio:</label>
+              <input
+                size="5rem"
+                type="text"
+                name="precio"
+                placeholder="$0.000,00"
+                class="create__form--line" />
+            </div>
+            <div>
+              <label for="stock">Stock:</label>
+              <input
+                size="5rem"
+                type="text"
+                name="stock"
+                placeholder="0"
+                class="create__form--line" />
+            </div>
+          </li>
+          <li
+            class="create__form__ul__li--typography create__form__ul__li__div">
+            <div>
+              <label for="descount">Descuento:</label>
+              <input
+                type="number"
+                id="descount"
+                name="descount"
+                min="0"
+                max="100"
+                placeholder="0%"
+                size="5rem"
+                class="create__form--line" />
+            </div>
+            <div>
+              Cuotas:
+              <select name="cuotas" class="create__form__ul--select">
+                <option value="value1">3 cuotas sin interés</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+              </select>
+            </div>
+          </li>
+          <li class="create__form__ul__li--typography">
+            <label for="image">Imágenes:</label> <input type="file" />
           </li>
         </ul>
-        <ul>
-          <li><label for="image">Imágenes:</label> <input type="file" /></li>
-        </ul>
-        <button type="submit" value="addProduct">Agregar producto</button>
-        <button type="reset" value="clean">Limpiar</button>
+        <button
+          class="create__form--gap create__form--btn"
+          type="submit"
+          value="addProduct">
+          Agregar Producto
+        </button>
+        <button
+          class="create__form--gap create__form--gap create__form--btn"
+          type="reset"
+          value="clean">
+          Limpiar
+        </button>
       </form>
     </main>
 
