@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/index.css" />
-    <title>Login</title>
+    <title>Register</title>
   </head>
   <body>
     <header>
@@ -51,24 +51,68 @@
       </nav>
     </header>
 
-    <main>
-      <h1>INGRESAR A MI CUENTA</h1>
-      <form action="submit">
-        <label for="name">Nombre:</label>
-        <input type="name" name="name" id="name" />
-        <label for="surname">Apellido:</label>
-        <input type="surname" name="surname" id="surname" />
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" />
-        <label for="passwordr">Contraseña:</label>
-        <input type="password" name="password" id="password" />
-        <label for="password">Repita contraseña:</label>
-        <input type="password" name="password" id="password" />
-
-        <button type="submit" value="login">Registrar</button>
+    <main class="register__main__form--container">
+      <form action="submit" ><div class="register__form__ul__form__div">  <h1 class="create__form__ul--h1 register__form__ul__form--center">CREA TU CUENTA</h1>
+        <p class="register__form__ul__form--center register__form__ul--p ">Completa el formulario para ser parte del mundo de los Funkos</p></div>
+       
+       
+        <ul class="register__form--centered register__form__ul--container" >
+          <li class="register__form--item">
+            <label class="create__form__ul__li--typography" for="name"
+              >Nombre:</label
+            >
+            <input
+              class="create__form--line register__form__ul__li--gap"
+              type="name"
+              name="name"
+              id="name" />
+          </li>
+          <li class="register__form--item">  <label class="create__form__ul__li--typography" for="surname"
+          >Apellido:</label
+        >
+        <input
+          class="create__form--line register__form__ul__li--gap"
+          type="surname"
+          name="surname"
+          id="surname" /></li>
+          <li class="register__form--item">
+        <label class="create__form__ul__li--typography" for="email"
+          >Email:</label
+        >
+        <input
+          class="create__form--line register__form__ul__li--gap1"
+          type="email"
+          name="email"
+          id="email" /></li>
+          <li class="register__form--item"><label class="create__form__ul__li--typography" for="passwordr"
+          >Contraseña:</label
+        >
+        <input
+          class="create__form--line register__form__ul__li--gap2"
+          type="password"
+          name="password"
+          id="password" /></li>
+          <li class="register__form--item"><label class="create__form__ul__li--typography" for="password"
+          >Repita contraseña:</label
+        >
+        <input
+          class="create__form--line register__form__ul__li--gap3"
+          type="password"
+          name="password"
+          id="password" /></li>
+          <li class="create__form__ul__li__div register__form--item">  <button class="create__form--btn" type="submit" value="login">
+          Registrar
+        </button>
         <input type="checkbox" name="terms" id="terms" />
-        <label for="terms">Acepto Términos y Condiciones</label>
-      </form>
+        <label for="terms" class="register__form__ul__li--center">Acepto Términos y Condiciones</label>
+      </form></li>
+        </ul>
+
+      
+        
+        
+
+      
     </main>
 
     <footer class="footer">
