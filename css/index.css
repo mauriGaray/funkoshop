@@ -688,5 +688,5 @@ nav {
 .login__link{
   font-family: var(--base-font);
   color: var(--secondary-solid);
-  font-size: var(--font-xsmall);
+  font-size: var(--font-medium);
 }
