@@ -934,3 +934,90 @@ align-items: end;
 }
 
 /***************** FIN CARRITO *******************/
+
+
+/***************** INICIO DE ADMIN *******************/
+
+.admin__buscar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.admin__buscar input {
+  border: 2px solid;
+  border-color:#30343F;
+  border-radius: 6px;
+  width:500px;
+  padding: 1rem;
+}
+
+.admin__buscar input::placeholder {
+  font-size: 1.2em; 
+  color: #B9B9B9; 
+  }
+
+.admin__buscar img {
+   max-width: 30px;
+   margin-right: 1.9rem;
+}
+
+.admin__table__cab{
+  padding-inline-end: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3.4rem;
+  margin-top: 3.6rem;
+}
+
+.admin__table{
+  width: 100%;
+  margin-bottom: 3.6rem;
+  }
+
+.admin__table__tit{
+font-size: 4.2em;
+}
+
+.admin__table__agregar{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: flex-end;
+  align-content: center;
+  font-size: 2.4em;
+ }
+
+.admin__table__icon--plus{
+  color: red;
+  font-size: 1.8em;
+  margin-left: 2.2rem
+}
+
+
+.admin__table th{ 
+    padding-bottom: 23px;
+  text-align: left;
+  font-size: 2.4em;
+  font-weight: 700;
+}
+
+.admin__table td{
+   font-size: 24px;
+   font-weight: 500;
+   padding: 1rem;
+}
+
+
+.admin__table__td--icon_pencil {
+  color: #1D84B5;
+ }
+
+ .admin__table__td--icon_trash {
+  color: red;
+ }
+
+ 
+/***************** FIN DE ADMIN *******************/
