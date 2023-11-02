@@ -620,7 +620,7 @@ nav {
 
 /*----- Styles para Login -----*/
 
-.main-login{
+.main-login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -629,46 +629,45 @@ nav {
   margin: var(--spacing-36) 0;
 }
 
-.login__title{
+.login__title {
   font-family: var(--alternative-font);
   font-size: var(--font-jumbo);
 }
 
-.form-list__items{
+.form-list__items {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-28);
 }
 
-.form-list__item{
+.form-list__item {
   display: flex;
   gap: var(--spacing-20);
   justify-content: space-between;
-
 }
 
-.form-list__label{
+.form-list__label {
   font-family: var(--base-font);
   font-size: var(--font-large);
 }
 
-#email{
+#email {
   margin-left: var(--spacing-68);
 }
 
-.form-list__input{
+.form-list__input {
   font-size: var(--font-small);
   border: none;
   border-bottom: 1px solid var(--primary-solid);
 }
 
-.form-list__item3{
+.form-list__item3 {
   display: flex;
   gap: var(--spacing-36);
 }
 
-.form-list__buttonSubmit{
+.form-list__buttonSubmit {
   font-size: var(--font-xsmall);
   font-family: var(--base-font);
   color: var(--light-font-solid);
@@ -677,7 +676,7 @@ nav {
   padding: var(--spacing-12) var(--spacing-28);
 }
 
-.form-list__subitem{
+.form-list__subitem {
   display: flex;
   font-family: var(--base-font);
   align-items: center;
@@ -685,7 +684,7 @@ nav {
   font-size: var(--font-small);
 }
 
-.login__link{
+.login__link {
   font-family: var(--base-font);
   color: var(--secondary-solid);
   font-size: var(--font-medium);
