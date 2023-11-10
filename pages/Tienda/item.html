@@ -71,17 +71,22 @@
           edición limitada..
         </p>
         <p class="item__main__section--price " >$ 1799,99</p>
-      
           <div class="item__section__article__div">
-            <input type="number" id="cantidades" name="cantidad" min="1" placeholder="0" class="item__input" /> <div class="sumayresta"><button class="suma">+</button><button class="resta">-</button></div>
-            <a class="item__form--btn" href=""> <div class="item--center" >Agregar al Carrito</div></a>
+            <input type="number" id="quantity" name="quantity" min="1" placeholder="0" class="item__input" />
+            <div class="sumayresta">
+              <button id='add' class="suma">+</button>
+              <button class="resta" id='subtract'>-</button>
+            </div>
+            <a class="item__form--btn" href="">
+              <div class="item--center" >Agregar al Carrito</div>
+            </a>
           </div>
         </div>
         <a href="" class="item__main__section--link">Ver métodos de pago - 3 CUOTAS SIN INTERÉS</a>
       </article>
     </section>
 
-     
+
       <section class="slider container glide">
         <h2 class="slider__title">Productos relacionados</h2>
         <div class="glide__track" data-glide-el="track">
@@ -207,5 +212,6 @@
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script src="/JS/GlideJS/glide.js"></script>
+    <script src="/JS/itemJS/item.js"></script>
   </body>
 </html>
