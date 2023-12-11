@@ -21,8 +21,21 @@ const getProductById = async (id) => {
     conn.releaseConnection();
   }
 };
+const getLastProducts = async () => {
+  try {
+    const [rows] = await conn.query(
+      "SELECT * FROM product ORDER BY create_time DESC LIMIT 3"
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
 
 module.exports = {
   getAllProducts,
   getProductById,
+  getLastProducts,
 };
