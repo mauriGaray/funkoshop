@@ -39,6 +39,7 @@ module.exports = {
   postCart: async (req, res) => {
     res.render("inProgress");
   },
+
   //admin
   admin: async (req, res) => {
     res.render("inProgress");

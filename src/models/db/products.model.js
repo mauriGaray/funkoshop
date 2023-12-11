@@ -1,4 +1,3 @@
-const { getProducts } = require("../../controllers/mainController");
 const { conn } = require("../config/conn");
 
 const getAllProducts = async () => {
