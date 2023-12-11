@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const mainRoute = require("./src/router/mainRoute.js");
+const mainRoutes = require("./src/router/mainRoutes.js");
+const adminRoutes = require("./src/router/adminRoutes.js");
+const shopRoutes = require("./src/router/shopRoutes.js");
+const authRoutes = require("./src/router/authRoutes.js");
 const override = require("method-override"); // middleware para poder usar  módulos externos
 const path = require("path");
 const PORT = process.env.PORT || 3000;
@@ -17,8 +20,10 @@ app.set("views", path.join(__dirname, "./src/views")); // setea el directorio de
 //__dirname es una variable global que devuelve la ruta del directorio actual
 
 //rutas
-app.use("/", mainRoute);
-
+app.use("/", mainRoutes);
+app.use("/shop", shopRoutes);
+app.use("/admin", adminRoutes);
+app.use("/auth", authRoutes);
 app.use((req, res, next) => {
   res
     .status(404)
