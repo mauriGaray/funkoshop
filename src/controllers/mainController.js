@@ -1,7 +1,13 @@
+const path = require("path");
+const models = require("../models/db/products.model.js");
+const connection = require("../models/config/conn.js");
 module.exports = {
   //main
-  home: (req, res) => {
-    res.render("index");
+  home: async (req, res) => {
+    const products = await models.getAllProducts();
+    res.render(path.resolve(__dirname, "../views/main/index.ejs"), {
+      products,
+    });
   },
   contact: (req, res) => {
     res.render("inProgress");
@@ -15,7 +21,10 @@ module.exports = {
 
   //shop
   shop: async (req, res) => {
-    res.render("shop");
+    const product = await models.getAllProducts();
+    res.render(path.resolve(__dirname, "../views/shop/shop.ejs"), {
+      product,
+    });
   },
   productDetail: async (req, res) => {
     res.render("item");

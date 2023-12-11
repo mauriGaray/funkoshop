@@ -14,7 +14,8 @@ app.use(express.json()); // express.algo es un middleware nativo
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 // habilita el uso de otros métodos HTTP como PUT y DELETE
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("public"));
+app.use(express.static(path.resolve(__dirname, "public")));
 app.set("view engine", "ejs"); // setea el motor de vistas a EJS
 app.set("views", path.join(__dirname, "./src/views")); // setea el directorio de vistas a la carpeta views
 //path cambia las barras dependiendo del sistema operativo

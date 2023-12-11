@@ -114,15 +114,15 @@
                   <picture class="card-item__cover">
                     <span class="card-item__tag">NUEVO</span>
                     <img class="card-item__img--front"
-                      src="../../img/star-wars/trooper-1.webp"
-                      alt="Figura coleccionable funko Trooper Star wars" />
+                      src="<%= product.image_front %>"
+                      alt="<%= product.product_description %>" />
                     <img class="card-item__img--back"
-                      src="../../img/star-wars/trooper-box.webp"
-                      alt="Figura coleccionable funko Trooper Star wars en caja" />
+                      src="<%= product.image_back %>"
+                      alt="<%= product.product_description %>" />
                   </picture>
 
                   <div class="card-item__content">
-                    <p class="card-item__licence">STAR WARS</p>
+                    <p class="card-item__licence"><%= product.product_name %></p>
                     <h4 class="card-item__name">STORMTROOPER LIGHTSABER</h4>
                     <p class="card-item__price">$ 1799,99</p>
                     <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
