@@ -5,14 +5,15 @@ const mainRoutes = require("./src/router/mainRoutes.js");
 const adminRoutes = require("./src/router/adminRoutes.js");
 const shopRoutes = require("./src/router/shopRoutes.js");
 const authRoutes = require("./src/router/authRoutes.js");
-const override = require("method-override"); // middleware para poder usar  módulos externos
+const methodOverride = require("method-override"); // middleware para poder usar  módulos externos
 const path = require("path");
 const PORT = process.env.PORT || 3000;
 
 //configuración de express
 app.use(express.json()); // express.algo es un middleware nativo
 app.use(express.urlencoded({ extended: true }));
-app.use(override("_method")); // habilita el uso de otros métodos HTTP como PUT y DELETE
+app.use(methodOverride("_method"));
+// habilita el uso de otros métodos HTTP como PUT y DELETE
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs"); // setea el motor de vistas a EJS
 app.set("views", path.join(__dirname, "./src/views")); // setea el directorio de vistas a la carpeta views

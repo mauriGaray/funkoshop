@@ -9,3 +9,4 @@ router.get("/shop/item/:id", mainController.productDetail);
 router.post("/shop/item/:id/add", mainController.addProduct);
 router.get("/shop/cart", mainController.cart);
 router.post("/shop/cart", mainController.postCart);
+module.exports = router;
