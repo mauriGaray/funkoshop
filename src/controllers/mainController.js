@@ -4,10 +4,9 @@ const connection = require("../models/config/conn.js");
 module.exports = {
   //main
   home: async (req, res) => {
-    const products = await models.getAllProducts();
     const lastProducts = await models.getLastProducts();
+
     res.render(path.resolve(__dirname, "../views/main/index.ejs"), {
-      products,
       lastProducts,
     });
   },
