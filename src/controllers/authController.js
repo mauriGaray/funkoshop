@@ -1,24 +1,21 @@
 const path = require("path");
 const models = require("../models/db/products.model.js");
 const connection = require("../models/config/conn.js");
+
 module.exports = {
-  //main
-  home: async (req, res) => {
-    const lastProducts = await models.getLastProducts();
-    console.log(lastProducts);
-
-    res.render(path.resolve(__dirname, "../views/main/index.ejs"), {
-      lastProducts,
-    });
-  },
-
-  contact: (req, res) => {
+  getAuthLogin: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
-  faqs: (req, res) => {
+  postAuthLogin: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
-  about: (req, res) => {
+  getAuthRegister: async (req, res) => {
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
+  },
+  postAuthRegister: async (req, res) => {
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
+  },
+  getAuthLogout: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
 };
