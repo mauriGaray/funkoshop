@@ -34,6 +34,10 @@ app.use((req, res, next) => {
       `<h1>Recurso no encontrado, <a href='/'>regresar a página principal</a></h1>`
     );
 });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.render(path.resolve(__dirname, "./src/views/errors/err500.ejs"));
+});
 
 //servidor
 

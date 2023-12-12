@@ -5,19 +5,21 @@ module.exports = {
   //main
   home: async (req, res) => {
     const lastProducts = await models.getLastProducts();
+    console.log(lastProducts);
 
     res.render(path.resolve(__dirname, "../views/main/index.ejs"), {
       lastProducts,
     });
   },
+
   contact: (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   faqs: (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   about: (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
 
   //shop
@@ -31,48 +33,48 @@ module.exports = {
     res.render("item");
   },
   addProduct: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   cart: async (req, res) => {
     res.render("carrito");
   },
   postCart: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
 
   //admin
   admin: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   getProducts: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   postProduct: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   getEditProduct: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   putEditProduct: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   deleteProduct: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   //auth
   getAuthLogin: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   postAuthLogin: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   getAuthRegister: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   postAuthRegister: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   getAuthLogout: async (req, res) => {
-    res.render("inProgress");
+    res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
 };
