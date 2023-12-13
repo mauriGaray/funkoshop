@@ -6,10 +6,6 @@ module.exports = {
     res.render(path.resolve(__dirname, "../views/errors/err500.ejs"));
   },
   error404: (req, res, next) => {
-    res
-      .status(404)
-      .send(
-        `<h1>Recurso no encontrado, <a href='/'>regresar a página principal</a></h1>`
-      );
+    res.render(path.resolve(__dirname, "../views/errors/err404.ejs"));
   },
 };

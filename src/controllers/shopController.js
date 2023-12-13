@@ -20,7 +20,7 @@ module.exports = {
     res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));
   },
   cart: async (req, res) => {
-    res.render("carrito");
+    res.render(path.resolve(__dirname, "../views/shop/carrito.ejs"));
   },
   postCart: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/errors/inProgress.ejs"));

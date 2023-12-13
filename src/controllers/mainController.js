@@ -5,8 +5,6 @@ module.exports = {
   //main
   home: async (req, res) => {
     const lastProducts = await models.getLastProducts();
-    console.log(lastProducts);
-
     res.render(path.resolve(__dirname, "../views/main/index.ejs"), {
       lastProducts,
     });
