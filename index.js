@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const { error500, error404 } = require("./src/controllers/errorsController.js");
 
 const mainRoutes = require("./src/router/mainRoutes.js");
 const adminRoutes = require("./src/router/adminRoutes.js");
@@ -28,17 +29,8 @@ app.use("/", mainRoutes);
 app.use("/shop", shopRoutes);
 app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
-app.use((req, res, next) => {
-  res
-    .status(404)
-    .send(
-      `<h1>Recurso no encontrado, <a href='/'>regresar a página principal</a></h1>`
-    );
-});
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.render(path.resolve(__dirname, "./src/views/errors/err500.ejs"));
-});
+app.use(error404);
+app.use(error500);
 
 //servidor
 
