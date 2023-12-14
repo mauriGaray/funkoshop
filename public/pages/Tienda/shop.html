@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <title>Shop</title>
+    <link rel="stylesheet" href="../../css/index.css" />
+    <title>Elegí el tuyo!</title>
   </head>
   <body>
      <header>
@@ -49,8 +49,9 @@
         </ul>
       </nav>
     </header>
-    <main class="main-shop container">
-      <aside class="aside">
+    <main class="container" >
+      <div class="shopContainer">  
+        <aside class="sidebar">
         <form action="submit" class="form">
           <ul class="form__items">
             <li class="form__item1">
@@ -74,10 +75,10 @@
               <ul class="subitems3">
                 <li class="subitems__item3">
                   <label class="subitems__label3" for="precioMinimo">MIN</label>
-                  <input class="subitems__input3" type="number" min="0" size="3" name="precioMinimo" placeholder="0" />
+                  <input class="subitems__input3" type="number" min="0" size="1" name="precioMinimo" placeholder="0" />
                   <span class="subitems__span3">-</span>
                   <label class="subitems__label3" for="precioMaximo">MAX</label>
-                  <input class="subitems__input3" type="number" min="0" size="3" name="precioMaximo" placeholder="0" />
+                  <input class="subitems__input3" type="number" min="0" size="1" name="precioMaximo" placeholder="0" />
                 </li>
               </ul>
             </li>
@@ -105,8 +106,8 @@
           </ul>
         </form>
       </aside>
-      <div>
-        <section class="slider">
+
+        <section class="main-content">
           <ul class="slider__items">
             <li class="slider__item">
               <article class="card-item">
@@ -318,7 +319,8 @@
             </li>
           </ul>
         </section>
-        <section class="pagination">
+       </div>
+     <section class="pagination">
           <div class="pagination__div">
             <a class="pagination__link icon"><iconify-icon icon="material-symbols:chevron-left" width="33" height="33">
             </iconify-icon></a>
@@ -331,7 +333,7 @@
             </iconify-icon></a>
           </div>
         </section>
-      </div>
+
     </main>
     <footer class="footer">
       <nav class="navbar container">

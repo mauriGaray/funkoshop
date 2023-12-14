@@ -377,24 +377,43 @@ iconify-icon {
 
 /*----- STYLES PARA SHOP -----*/
 
-.main-shop {
+.shopContainer {
   display: flex;
-  gap: var(--spacing-16);
 }
 
-.aside {
-  margin: var(--spacing-68) auto;
-}
-
-.form__item1,
-.form__item2,
-.form__item3,
-.form__item4 {
+.sidebar {
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
-  gap: var(--spacing-16);
-  font-weight: 500;
-  margin-bottom: var(--spacing-28);
+  padding-top: var(--spacing-68);
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 146rem;
+  padding-top: var(--spacing-68);
+  margin-left: 2rem;
+}
+
+.form__item1 {
+  align-self: flex-start;
+  padding: 1rem;
+}
+.form__item2 {
+  align-self: flex-start;
+  padding: 1rem;
+}
+.form__item3 {
+  align-self: flex-start;
+  padding: 1rem;
+}
+.form__item4 {
+  align-self: flex-start;
+  padding: 1rem;
 }
 
 .form__label1,
@@ -436,12 +455,30 @@ iconify-icon {
   font-family: var(--base-font);
   background-color: var(--light-bg-solid);
   border: 2px solid var(--dark-bg-solid);
+  width: 5rem;
+  height: 2.5rem;
   border-radius: 6px;
-  padding: 4px;
+  padding: auto 0;
+}
+.form__input1::placeholder {
+  text-align: left;
 }
 
 ::placeholder {
   color: var(--dark-500);
+  text-align: center;
+}
+
+/* Sacar flechitas del select */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input[type="checkbox"] {
@@ -451,8 +488,9 @@ input[type="checkbox"] {
 .subitems4 {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
+  gap: var(--spacing-16);
   margin-left: var(--spacing-20);
+  margin-top: var(--spacing-8);
 }
 
 .subitem4 {
@@ -484,14 +522,13 @@ input[type="checkbox"] {
   width: 44px;
   height: 44px;
 }
+.pagination__link:hover {
+  border: 1px solid var(--primary-solid);
+  color: var(--primary-solid);
+}
 
 .icon {
   color: var(--dark-300);
-}
-
-.active {
-  border: 1px solid var(--primary-solid);
-  color: var(--primary-solid);
 }
 
 nav {
