@@ -75,7 +75,7 @@
             <% lastProducts.forEach(product => { %>
             <li class="slider__item glide__slide">
               <article class="card-item">
-                <a class="card-item__link" href="">
+                <a class="card-item__link" href="shop/item/:id">
                   <picture class="card-item__cover">
                     <span class="card-item__tag">NUEVO</span>
                     <img
@@ -89,7 +89,9 @@
                   </picture>
 
                   <div class="card-item__content">
-                    <p class="card-item__licence"><%= product.licence_id %></p>
+                    <p class="card-item__licence">
+                      <%= product.licence_name %>
+                    </p>
                     <h4 class="card-item__name"><%= product.product_name %></h4>
                     <p class="card-item__price">$ <%= product.price %></p>
                     <p class="card-item__promo">

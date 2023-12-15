@@ -1,4 +1,5 @@
 const { conn } = require("../config/conn");
+const mysql = require("mysql2");
 
 const getAllProducts = async () => {
   try {
@@ -16,7 +17,18 @@ const getAllProducts = async () => {
 const getProductById = async (id) => {
   try {
     const [rows] = await conn.query(
-      "SELECT * FROM product WHERE product_id = ?",
+      `SELECT
+    product.*,
+    category.category_name,
+    licence.licence_name
+    FROM
+    product
+    LEFT JOIN
+    category ON product.category_id = category.category_id
+    LEFT JOIN
+    licence ON product.licence_id = licence.licence_id
+    WHERE
+    product.product_id = ?;`,
       [id]
     );
     return rows[0];
@@ -29,8 +41,37 @@ const getProductById = async (id) => {
 const getLastProducts = async () => {
   try {
     const [rows] = await conn.query(
-      "SELECT * FROM product ORDER BY create_time ASC LIMIT 3"
+      `SELECT
+       product.*,
+       category.category_name,
+       licence.licence_name
+       FROM product
+       LEFT JOIN category ON product.category_id = category.category_id
+       LEFT JOIN licence ON product.licence_id = licence.licence_id
+       ORDER BY create_time
+       ASC LIMIT 3`
     );
+    return rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
+const get10Products = async (page, itemsPerPage) => {
+  try {
+    const [cant] = await conn.query(
+      "SELECT COUNT(product_id) AS product_quantity FROM product;"
+    );
+
+    const offset = (page - 1) * itemsPerPage;
+
+    const query = `SELECT * FROM product LIMIT ${mysql.escape(
+      offset
+    )}, ${mysql.escape(itemsPerPage)};`;
+
+    const [rows] = await conn.query(query);
+
     return rows;
   } catch (error) {
     throw error;
@@ -43,4 +84,5 @@ module.exports = {
   getAllProducts,
   getProductById,
   getLastProducts,
+  get10Products,
 };

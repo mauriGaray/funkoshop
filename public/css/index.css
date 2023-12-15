@@ -91,6 +91,10 @@ footer {
 img {
   width: 100%;
 }
+#building {
+  width: 50%;
+  margin-top: 2rem;
+}
 
 /* HEADER*/
 

@@ -7,7 +7,7 @@
     <title>Item</title>
   </head>
 
-  <body>
+ <body>
   <%- include('../partials/header.ejs') %>
 
     <!----------Article Baby Yoda   --------------------->
@@ -16,19 +16,18 @@
       <picture>
         <img
         class="item__section__picture"
-          src="/img/star-wars/baby-yoda-1.webp"
-          alt="Figura de Funko de Baby Yoda, colección Star Wars"
+          src="/img/<%= product.image_front %>"
+          alt="Figura de Funko de <%= product.product_name %>, colección <%= product.licence_name %>" 
         />
       </picture>
 
       <article class="item__section__article">
-        <p class="card-item__licence">STAR WARS</p>
-        <h4 class="card-item__name item__main__section--title">BABY YODA BLUEBALL</h4>
+        <p class="card-item__licence"><%= product.licence_name %></p>
+        <h4 class="card-item__name item__main__section--title"><%= product.product_name %></h4>
         <p>
-          Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga,
-          edición limitada..
+        <%= product.product_description %>
         </p>
-        <p class="item__main__section--price " >$ 1799,99</p>
+        <p class="item__main__section--price " >$ <%= product.price %></p>
           <div class="item__section__article__div">
             <input type="number" id="quantity" name="quantity" min="1" placeholder="0" class="item__input" />
             <div class="sumayresta">
@@ -40,7 +39,7 @@
             </a>
           </div>
         </div>
-        <a href="" class="item__main__section--link">Ver métodos de pago - 3 CUOTAS SIN INTERÉS</a>
+        <a href="" class="item__main__section--link">Ver métodos de pago - <%= product.dues %> CUOTAS SIN INTERÉS</a>
       </article>
     </section>
 
