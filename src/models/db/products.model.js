@@ -13,6 +13,11 @@ const getAllProducts = async () => {
     conn.releaseConnection();
   }
 };
+function paginate(products, page, pageSize) {
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  return [products.slice(startIndex, endIndex), startIndex, endIndex];
+}
 
 const getProductById = async (id) => {
   try {
@@ -58,12 +63,20 @@ const getLastProducts = async () => {
     conn.releaseConnection();
   }
 };
-const get10Products = async (page, itemsPerPage) => {
+const getTotalQuantity = async () => {
   try {
     const [cant] = await conn.query(
       "SELECT COUNT(product_id) AS product_quantity FROM product;"
     );
-
+    return cant[0].product_quantity;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
+const getShopProducts = async (page, itemsPerPage) => {
+  try {
     const offset = (page - 1) * itemsPerPage;
 
     const query = `SELECT * FROM product LIMIT ${mysql.escape(
@@ -79,10 +92,35 @@ const get10Products = async (page, itemsPerPage) => {
     conn.releaseConnection();
   }
 };
+const relatedProducts = async (license) => {
+  try {
+    const [rows] = await conn.query(
+      `SELECT
+       product.*,
+       category.category_name,
+       licence.licence_name
+       FROM product
+       LEFT JOIN category ON product.category_id = category.category_id
+       LEFT JOIN licence ON product.licence_id = licence.licence_id
+       WHERE
+       product.licence_id = ?
+       LIMIT 3;`,
+      [license]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
 
 module.exports = {
   getAllProducts,
   getProductById,
   getLastProducts,
-  get10Products,
+  getShopProducts,
+  relatedProducts,
+  paginate,
+  getTotalQuantity,
 };

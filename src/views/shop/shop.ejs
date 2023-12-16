@@ -8,85 +8,119 @@
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <main class="container" >
-      <div class="shopContainer">  
+    <main class="container">
+      <div class="shopContainer">
         <aside class="sidebar">
-        <form action="submit" class="form">
-          <ul class="form__items">
-            <li class="form__item1">
-              <label class="form__label1" for="busquedaProducto">BUSCAR</label>
-              <input class="form__input1"
-                type="text"
-                name="busquedaProducto"
-                placeholder="item o categoria" />
-            </li>
-            <li class="form__item2">
-              <span class="form__span2">ORDENAR POR</span>
-              <select class="form__select2" name="select">
-                <option value="value1" selected>Mayor a menor</option>
-                <option value="value2">Menor a Mayor</option>
-                <option value="value3">Value 3</option>
-                <option value="value4">Value 4</option>
-              </select>
-            </li>
-            <li class="form__item3">
-              <span class="form__span3">PRECIO</span>
-              <ul class="subitems3">
-                <li class="subitems__item3">
-                  <label class="subitems__label3" for="precioMinimo">MIN</label>
-                  <input class="subitems__input3" type="number" min="0" size="1" name="precioMinimo" placeholder="0" />
-                  <span class="subitems__span3">-</span>
-                  <label class="subitems__label3" for="precioMaximo">MAX</label>
-                  <input class="subitems__input3" type="number" min="0" size="1" name="precioMaximo" placeholder="0" />
-                </li>
-              </ul>
-            </li>
-            <li class="form__item4">
-              <span class="form__span4">FILTRAR</span>
-              <ul class="subitems4">
-                <li class="subitem4">
-                  <input type="checkbox" name="filtro" value="nuevos" />
-                  <label class="subitems__label4" for="filtro">NUEVOS</label>
-                </li>
-                <li class="subitem4">
-                  <input type="checkbox" name="filtro" value="ofertas" />
-                  <label class="subitems__label4" for="filtro">OFERTAS</label>
-                </li>
-                <li class="subitem4">
-                  <input type="checkbox" name="filtro" value="edicion_especial" />
-                  <label class="subitems__label4" for="filtro">EDICION ESPECIAL</label>
-                </li>
-                <li class="subitem4">
-                  <input type="checkbox" name="filtro" value="favoritos" />
-                  <label class="subitems__label4" for="filtro">FAVORITOS</label>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </form>
-      </aside>
+          <form action="submit" class="form">
+            <ul class="form__items">
+              <li class="form__item1">
+                <label class="form__label1" for="busquedaProducto"
+                  >BUSCAR</label
+                >
+                <input
+                  class="form__input1"
+                  type="text"
+                  name="busquedaProducto"
+                  placeholder="item o categoria" />
+              </li>
+              <li class="form__item2">
+                <span class="form__span2">ORDENAR POR</span>
+                <select class="form__select2" name="select">
+                  <option value="value1" selected>Mayor a menor</option>
+                  <option value="value2">Menor a Mayor</option>
+                  <option value="value3">Value 3</option>
+                  <option value="value4">Value 4</option>
+                </select>
+              </li>
+              <li class="form__item3">
+                <span class="form__span3">PRECIO</span>
+                <ul class="subitems3">
+                  <li class="subitems__item3">
+                    <label class="subitems__label3" for="precioMinimo"
+                      >MIN</label
+                    >
+                    <input
+                      class="subitems__input3"
+                      type="number"
+                      min="0"
+                      size="1"
+                      name="precioMinimo"
+                      placeholder="0" />
+                    <span class="subitems__span3">-</span>
+                    <label class="subitems__label3" for="precioMaximo"
+                      >MAX</label
+                    >
+                    <input
+                      class="subitems__input3"
+                      type="number"
+                      min="0"
+                      size="1"
+                      name="precioMaximo"
+                      placeholder="0" />
+                  </li>
+                </ul>
+              </li>
+              <li class="form__item4">
+                <span class="form__span4">FILTRAR</span>
+                <ul class="subitems4">
+                  <li class="subitem4">
+                    <input type="checkbox" name="filtro" value="nuevos" />
+                    <label class="subitems__label4" for="filtro">NUEVOS</label>
+                  </li>
+                  <li class="subitem4">
+                    <input type="checkbox" name="filtro" value="ofertas" />
+                    <label class="subitems__label4" for="filtro">OFERTAS</label>
+                  </li>
+                  <li class="subitem4">
+                    <input
+                      type="checkbox"
+                      name="filtro"
+                      value="edicion_especial" />
+                    <label class="subitems__label4" for="filtro"
+                      >EDICION ESPECIAL</label
+                    >
+                  </li>
+                  <li class="subitem4">
+                    <input type="checkbox" name="filtro" value="favoritos" />
+                    <label class="subitems__label4" for="filtro"
+                      >FAVORITOS</label
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </form>
+        </aside>
 
         <section>
           <ul class="main-content">
-           <% products.forEach(product => { %>
-               <li class="slider__item">
+            <% products.forEach(product => { %>
+            <li class="slider__item">
               <article class="card-item">
-                <a class="card-item__link" href="/shop/item/<%= product.product_id %>">
+                <a
+                  class="card-item__link"
+                  href="/shop/item/<%= product.product_id %>">
                   <picture class="card-item__cover">
                     <span class="card-item__tag">NUEVO</span>
-                    <img class="card-item__img--front"
+                    <img
+                      class="card-item__img--front"
                       src="img/<%= product.image_front %>"
                       alt="Figura coleccionable funko Trooper Star wars" />
-                    <img class="card-item__img--back"
+                    <img
+                      class="card-item__img--back"
                       src="img/<%= product.image_back %>"
                       alt="Figura coleccionable funko Trooper Star wars en caja" />
                   </picture>
 
                   <div class="card-item__content">
-                    <p class="card-item__licence"><%= product.licence_name %></p>
+                    <p class="card-item__licence">
+                      <%= product.licence_name %>
+                    </p>
                     <h4 class="card-item__name"><%= product.product_name %></h4>
                     <p class="card-item__price">$ <%= product.price %></p>
-                    <p class="card-item__promo"><%= `${product.dues} CUOTAS SIN INTERÉS` %></p>
+                    <p class="card-item__promo">
+                      <%= `${product.dues} CUOTAS SIN INTERÉS` %>
+                    </p>
                   </div>
                 </a>
               </article>
@@ -94,23 +128,69 @@
             <% }) %>
           </ul>
         </section>
-       </div>
-     <section class="pagination">
-          <div class="pagination__div">
-            <a class="pagination__link icon"><iconify-icon icon="material-symbols:chevron-left" width="33" height="33">
-            </iconify-icon></a>
-            <a class="pagination__link active">1</a>
-            <a class="pagination__link">2</a>
-            <a class="pagination__link">...</a>
-            <a class="pagination__link">9</a>
-            <a class="pagination__link">10</a>
-            <a class="pagination__link icon"><iconify-icon icon="material-symbols:chevron-right" width="33" height="33">
-            </iconify-icon></a>
-          </div>
-        </section>
+      </div>
+      <section class="pagination">
+        <ul class="pagination__div" id="pagination">
+          <a class="pagination__link icon" id="prevPage">
+            <iconify-icon
+              icon="material-symbols:chevron-left"
+              width="33"
+              height="33"></iconify-icon>
+          </a>
+          <%= totalPages %> <% for (let i = 1; i < totalPages; i++) { %>
+          <a class="pagination__link" href="/shop?page=<%= i %>"><%= i %></a>
+          <% } %>
+
+          <a class="pagination__link icon" id="nextPage">
+            <iconify-icon
+              icon="material-symbols:chevron-right"
+              width="33"
+              height="33"></iconify-icon>
+          </a>
+        </ul>
+      </section>
     </main>
     <%- include('../partials/footer.ejs') %>
-  
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const prevPageButton = document.getElementById("prevPage");
+        const nextPageButton = document.getElementById("nextPage");
+        const pagination = document.getElementById("pagination");
+
+        let currentPage = 1; // Página actual, inicializada en 1
+
+        // Función para manejar el cambio de página
+        function showPage(page) {
+          // Puedes agregar lógica adicional aquí, como hacer una solicitud AJAX para obtener los productos de la página.
+          console.log(`Mostrar página ${page}`);
+        }
+
+        // Manejar clic en la flecha izquierda
+        prevPageButton.addEventListener("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+          }
+        });
+
+        // Manejar clic en la flecha derecha
+        nextPageButton.addEventListener("click", function () {
+          if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+          }
+        });
+
+        // Manejar clic en los enlaces de paginación
+        pagination.addEventListener("click", function (event) {
+          if (event.target.classList.contains("pagination__link")) {
+            currentPage = parseInt(event.target.textContent);
+            showPage(currentPage);
+          }
+        });
+      });
+    </script>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </body>
 </html>
