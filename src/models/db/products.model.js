@@ -54,7 +54,7 @@ const getLastProducts = async () => {
        LEFT JOIN category ON product.category_id = category.category_id
        LEFT JOIN licence ON product.licence_id = licence.licence_id
        ORDER BY create_time
-       ASC LIMIT 3`
+       ASC LIMIT 6`
     );
     return rows;
   } catch (error) {
@@ -95,7 +95,7 @@ const getShopProducts = async (page, itemsPerPage) => {
 const relatedProducts = async (license) => {
   try {
     const [rows] = await conn.query(
-      `SELECT
+      `SELECT DISTINCT
        product.*,
        category.category_name,
        licence.licence_name
@@ -103,8 +103,8 @@ const relatedProducts = async (license) => {
        LEFT JOIN category ON product.category_id = category.category_id
        LEFT JOIN licence ON product.licence_id = licence.licence_id
        WHERE
-       product.licence_id = ?
-       LIMIT 3;`,
+       licence.licence_name = ?
+       LIMIT 4;`,
       [license]
     );
     return rows;

@@ -137,10 +137,10 @@
               width="33"
               height="33"></iconify-icon>
           </a>
-          <%= totalPages %> <% for (let i = 1; i < totalPages; i++) { %>
+          <% const totalPagesValue = totalPages || 1; %> <% for (let i = 1; i <=
+          totalPagesValue; i++) { %>
           <a class="pagination__link" href="/shop?page=<%= i %>"><%= i %></a>
           <% } %>
-
           <a class="pagination__link icon" id="nextPage">
             <iconify-icon
               icon="material-symbols:chevron-right"

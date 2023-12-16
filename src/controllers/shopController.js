@@ -10,27 +10,32 @@ const {
 const connection = require("../models/config/conn.js");
 module.exports = {
   shop: async (req, res) => {
-    const page = parseInt(req.query.page) || 1; // Página por defecto es 1
-    const pageSize = 9; // Cantidad de productos por página
-    const cant = await getTotalQuantity();
-    const totalPages = Math.ceil(cant / pageSize);
+    try {
+      const page = parseInt(req.query.page) || 1; // Página por defecto es 1
+      const pageSize = 9; // Cantidad de productos por página
+      const cant = await getTotalQuantity();
+      const totalPages = Math.ceil(cant / pageSize);
 
-    const products = await getShopProducts(page, pageSize);
+      const products = await getShopProducts(page, pageSize);
 
-    res.render(path.resolve(__dirname, "../views/shop/shop.ejs"), {
-      products,
-      totalPages,
-    });
+      res.render(path.resolve(__dirname, "../views/shop/shop.ejs"), {
+        products,
+        totalPages,
+      });
+    } catch (error) {
+      console.error("Error en el controlador shop:", error);
+      res.status(500).send("Error interno del servidor");
+    }
   },
 
   productDetail: async (req, res) => {
     const id = req.params.id;
     const product = await getProductById(id);
-    const relatedProducts = relatedProducts(product[0].licence_id);
-
+    let license = product.licence_name;
+    const relatedData = await relatedProducts(license);
     res.render(path.resolve(__dirname, "../views/shop/item.ejs"), {
       product,
-      relatedProducts,
+      relatedData,
     });
   },
   addProduct: async (req, res) => {
