@@ -5,7 +5,7 @@ const mainController = require("../controllers/adminController");
 // Routes
 
 router.get("/", mainController.admin);
-router.get("/create", mainController.getProducts);
+router.get("/create", mainController.createProducts);
 router.post("/create", mainController.postProduct);
 router.get("/edit/:id", mainController.getEditProduct);
 router.put("/edit/:id", mainController.putEditProduct);
