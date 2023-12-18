@@ -6,11 +6,13 @@ const mainRoutes = require("./src/router/mainRoutes.js");
 const adminRoutes = require("./src/router/adminRoutes.js");
 const shopRoutes = require("./src/router/shopRoutes.js");
 const authRoutes = require("./src/router/authRoutes.js");
-const { initSession } = require("./src/utils/session.js");
+const session = require("cookie-session");
 const methodOverride = require("method-override"); // middleware para poder usar  módulos externos
 const path = require("path");
 require("dotenv").config();
+const { v4: uuidv4 } = require("uuid");
 const PORT = process.env.PORT || 3000;
+const secret = process.env.SESSION_SECRET || uuidv4();
 
 //configuración de express
 app.set("view engine", "ejs"); // setea el motor de vistas a EJS
@@ -20,7 +22,20 @@ app.set("views", path.join(__dirname, "./src/views")); // setea el directorio de
 
 /* Creamos la session de usuario */
 
-app.use(initSession());
+app.use(
+  session({
+    name: "session",
+    keys: [
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      secret,
+    ],
+  })
+);
 
 /* Le pasamos a locals si el user esta logueado para aprovecharlo en las Vistas */
 
