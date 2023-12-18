@@ -1,4 +1,4 @@
-const session = require("express-session");
+const session = require("cookie-session");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
