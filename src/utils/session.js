@@ -6,9 +6,20 @@ function initSession() {
   const secret = process.env.SESSION_SECRET || uuidv4();
 
   return session({
-    secret: secret,
-    resave: true, // Puedes ajustar según tus necesidades
-    saveUninitialized: false, // Puedes ajustar según tus necesidades
+    name: "session",
+    keys: [
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      `${uuidv4()}`,
+      secret,
+    ],
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    secure: true,
+    httpOnly: true,
+    sameSite: "none",
   });
 }
 module.exports = {
