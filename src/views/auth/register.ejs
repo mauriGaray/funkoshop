@@ -10,7 +10,7 @@
    <%- include('../partials/header.ejs') %>
 
     <main class="register__main__form--container">
-      <form action="/register" method="post" enctype="application/x-www-form-urlencoded" >
+      <form action="/auth/register" method="post" enctype="application/x-www-form-urlencoded" >
         <div class="register__form__ul__form__div">
           <h1 class="create__form__ul--h1 register__form__ul__form--center">CREA TU CUENTA</h1>
           <p class="register__form__ul__form--center register__form__ul--p ">Completa el formulario para ser parte del mundo de los Funkos</p>
@@ -35,11 +35,11 @@
           name="surname"
           id="surname" /></li>
           <li class="register__form--item">
-        <label class="create__form__ul__li--typography" for="email"
+        <label class="create__form__ul__li--typography register__form__ul__li--gap4 " for="email"
           >Email:</label
         >
         <input
-          class="create__form--line register__form__ul__li--gap1"
+          class="create__form--line  "
           type="email"
           name="email"
           id="email" /></li>
@@ -57,15 +57,16 @@
         <input
           class="create__form--line register__form__ul__li--gap3"
           type="password"
-          name="password"
+          name="confirmPassword"
           id="confirmPassword" /></li>
-          <li class="create__form__ul__li__div register__form--item">  <button class="create__form--btn" type="submit" value="login">
+         
+          <li class="create__form__ul__li__div register__form--item">  <button class="create__form--btn" type="submit" value="register">
           Registrar
         </button>
-        <input type="checkbox" name="terms" id="terms" />
+        <input type="checkbox" name="terms" id="terms" required/>
         <label for="terms" class="register__form__ul__li--center">Acepto Términos y Condiciones</label>
-      </form></li>
-        </ul>
+      </li></form>
+    </ul>
 
       
         

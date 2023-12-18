@@ -6,6 +6,7 @@ const mainRoutes = require("./src/router/mainRoutes.js");
 const adminRoutes = require("./src/router/adminRoutes.js");
 const shopRoutes = require("./src/router/shopRoutes.js");
 const authRoutes = require("./src/router/authRoutes.js");
+const { initSession } = require("./src/utils/session.js");
 const methodOverride = require("method-override"); // middleware para poder usar  módulos externos
 const path = require("path");
 require("dotenv").config();
@@ -16,7 +17,19 @@ app.set("view engine", "ejs"); // setea el motor de vistas a EJS
 app.set("views", path.join(__dirname, "./src/views")); // setea el directorio de vistas a la carpeta views
 //path cambia las barras dependiendo del sistema operativo
 //__dirname es una variable global que devuelve la ruta del directorio actual
-app.use(express.urlencoded());
+
+/* Creamos la session de usuario */
+
+app.use(initSession());
+
+/* Le pasamos a locals si el user esta logueado para aprovecharlo en las Vistas */
+
+app.use((req, res, next) => {
+  res.locals.isLogged = req.session.isLogged;
+  next();
+});
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // express.algo es un middleware nativo
 app.use(methodOverride("_method"));
 // habilita el uso de otros métodos HTTP como PUT y DELETE

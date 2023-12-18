@@ -1,26 +1,54 @@
 const path = require("path");
-const user = require("../models/db/users.model");
+const { createUser, userVerification } = require("../models/db/users.model");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
-  getAuthLogin: async (req, res) => {
+  login: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/auth/login.ejs"));
   },
-  postAuthLogin: async (req, res) => {
-    const created = await user.create(req.body);
+  doLogin: async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+      const [user] = await userVerification(email);
+
+      if (!user) {
+        return res
+          .status(401)
+          .send("No existe un usuario registrado con ese email");
+      }
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (passwordMatch) {
+        req.session.isLogged = true;
+        res.locals.isLogged = req.session.isLogged;
+        return res.redirect("/");
+      } else {
+        return res
+          .status(401)
+          .send("La contraseña es incorrecta, por favor intenta nuevamente");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      return res
+        .status(500)
+        .send("Hubo un error, por favor intenta nuevamente");
+    }
   },
-  getAuthRegister: async (req, res) => {
+  register: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/auth/register.ejs"));
   },
-  postAuthRegister: async (req, res) => {
-    const created = await user.create(
-      req.body.nombre,
-      req.body.apellido,
-      req.body.email,
-      req.body.password
-    );
-    res.redirect("/");
+  doRegister: async (req, res) => {
+    const newUser = await createUser(req.body);
+    newUser
+      ? res.render(path.resolve(__dirname, "../views/auth/userWelcome.ejs"))
+      : res.send(
+          "Hubo un error al registrarte, por favor intenta nuevamente <a href='/auth/register'>AQUÍ</a>"
+        );
   },
-  getAuthLogout: async (req, res) => {
-    res.render('<h1>Usuario deslogueado</h1><a href="/">Volver</a>');
+  logout: async (req, res) => {
+    req.session.isLogged = false;
+    res.render(path.resolve(__dirname, "../views/auth/logout.ejs"));
   },
 };

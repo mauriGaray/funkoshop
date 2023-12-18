@@ -1,14 +1,13 @@
 const { validationResult } = require("express-validator");
 
-// Middleware para validar datos del formulario
-
 const validateInput = (req, res, next) => {
-  const errors = validationResult(req); // almacena los errores de validación
+  const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
-    // Si hay errores, se los devolvemos al cliente
-    return res.status(400).json({ errors: errors.array() });
+    res.send({ errors: errors.array() });
+  } else {
+    return next();
   }
-  next(); // Si no hay errores, continúa con el siguiente middleware
 };
 
 module.exports = validateInput;

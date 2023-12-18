@@ -1,4 +1,19 @@
 <footer class="footer">
+  <% if (locals.isLogged) { %>
+  <nav class="navbar container">
+    <ul class="navbar__item">
+      <li class="navbar__item">
+        <a class="navbar__link" href="/admin">PANEL DE PRODUCTOS </a>
+      </li>
+      <li class="navbar__item">
+        <a class="navbar__link" href="/auth/logout">LOGOUT</a>
+      </li>
+    </ul>
+    <picture>
+      <img src="/img/branding/isotype.svg" alt="Isotipo Funko Shop  " />
+    </picture>
+  </nav>
+  <% } else { %>
   <nav class="navbar container">
     <ul class="navbar__item">
       <li class="navbar__item">
@@ -19,6 +34,6 @@
       <img src="/img/branding/isotype.svg" alt="Isotipo Funko Shop  " />
     </picture>
   </nav>
-
+  <% } %>
   <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
 </footer>

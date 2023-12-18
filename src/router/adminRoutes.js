@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const mainController = require("../controllers/adminController");
+const { isLogged } = require("../middlewares/auth/isLogged");
 
+router.use(isLogged);
 // Routes
 
 router.get("/", mainController.admin);
