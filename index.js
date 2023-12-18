@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   return next();
 }); // middleware para poder usar la variable isLogged en todas las vistas
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // express.algo es un middleware nativo
 app.use(methodOverride("_method"));
 // habilita el uso de otros métodos HTTP como PUT y DELETE

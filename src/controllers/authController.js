@@ -18,11 +18,11 @@ module.exports = {
           .send("No existe un usuario registrado con ese email");
       }
 
-      const passwordMatch = await bcrypt.compare(password, user.password);
+      const passwordMatch = await bcrypt.compare(password, userExist.password);
 
       if (passwordMatch) {
         req.session.isLogged = true;
-        return res.redirect(`/admin`);
+        return res.redirect(`/`);
       } else {
         req.session.isLogged = false;
         return res
