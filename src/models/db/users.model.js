@@ -31,7 +31,7 @@ const userVerification = async (email) => {
     const [user] = await conn.query(
       `SELECT * FROM user WHERE email = '${email}' ;`
     );
-    return user;
+    return true;
   } catch (error) {
     console.log(error);
   } finally {

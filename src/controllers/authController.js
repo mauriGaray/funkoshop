@@ -10,9 +10,9 @@ module.exports = {
     const { email, password } = req.body;
 
     try {
-      const [user] = await userVerification(email);
+      const [userExist] = await userVerification(email);
 
-      if (!user) {
+      if (!userExist) {
         return res
           .status(401)
           .send("No existe un usuario registrado con ese email");
@@ -22,9 +22,9 @@ module.exports = {
 
       if (passwordMatch) {
         req.session.isLogged = true;
-        res.locals.isLogged = req.session.isLogged;
-        return res.redirect("/");
+        return res.redirect(`/admin`);
       } else {
+        req.session.isLogged = false;
         return res
           .status(401)
           .send("La contraseña es incorrecta, por favor intenta nuevamente");
