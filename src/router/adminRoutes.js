@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mainController = require("../controllers/adminController");
+const upload = require("../middlewares/uploadFiles.js");
 const { isLogged } = require("../middlewares/auth/isLogged");
 
 router.use(isLogged);
@@ -8,7 +9,7 @@ router.use(isLogged);
 
 router.get("/", mainController.admin);
 router.get("/create", mainController.createProducts);
-router.post("/create", mainController.postProduct);
+router.post("/create", upload.array("images", 2), mainController.postProduct);
 router.get("/edit/:id", mainController.getEditProduct);
 router.put("/edit/:id", mainController.putEditProduct);
 router.delete("/delete/:id", mainController.deleteProduct);

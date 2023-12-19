@@ -10,25 +10,25 @@
     <%- include('../partials/header.ejs') %>
 
     <main class="container">
-      <form action="submit" class="create__form">
+      <form action="/admin/create" method="POST" class="create__form" enctype="multipart/form-data">
         <ul class="create__form__ul">
           <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
               Categoría:
-              <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+              <select name="category" class="create_form_ul--select">
+                <option value="1" selected>Figuras Coleccionables</option>
+                <option value="2">Llaveros</option>
+                <option value="3">Remeras</option>
               </select>
             </div>
             <div>
               Licencia:
-              <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+              <select name="licence" class="create_form_ul--select">
+                <option value="1" selected>Pokemon</option>
+                <option value="2">Star Wars</option>
+                <option value="3">Harry Potter</option>
               </select>
             </div>
           </li>
@@ -94,14 +94,18 @@
             <div>
               Cuotas:
               <select name="cuotas" class="create__form__ul--select">
-                <option value="value1">3 cuotas sin interés</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+                <option value="value0">Sin cuotas</option>
+                <option value="value3">3 cuotas sin interés</option>
+                <option value="value6">6 cuotas sin interés</option>
+                <option value="value9">9 cuotas sin interés</option>
+                <option value="value12">12 cuotas sin interés</option>
+                <option value="value18">18 cuotas sin interés</option>
+                <option value="value24">24 cuotas sin interés</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="image">Imágenes:</label> <input type="file" />
+            <label for="image">Imágenes:</label> <input type="file" name="images" multiple/>
           </li>
         </ul>
         <button

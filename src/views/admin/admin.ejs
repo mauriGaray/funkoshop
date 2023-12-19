@@ -36,15 +36,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>STW001001</td>
-            <td>Baby Yoda Blueball</td>
-            <td>STARS WARS</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
+          <% products.forEach(product => {%>
+            <tr>
+              <td><%= product.product_id %></td>
+              <td><%= product.sku %></td>
+              <td><%= product.product_name %></td>
+              <td><%= product.product_category %></td>
+              <td><a href="/admin/edit/<%= product.product_id %>"><iconify-icon icon="mdi:pencil" class="admin_table_td--icon_pencil"></iconify-icon> </iconify-icon></a></td>
+              <td><iconify-icon icon="iconamoon:trash-fill" class="admin_table_td--icon_trash"></iconify-icon></td>
+            </tr>
+          <% }) %>
+          <!--<tr>
             <td>2</td>
             <td>STW001002</td>
             <td>Boba Fett Fighter</td>
@@ -139,7 +141,7 @@
             <td>HARRY POTTER</td>
             <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
             <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
+          </tr>-->
         </tbody>
       </table>
     </main>
