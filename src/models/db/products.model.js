@@ -7,10 +7,13 @@ const getAllProducts = async () => {
       "SELECT product.*, category.category_name, licence.licence_name FROM (product LEFT JOIN category ON category.category_id) LEFT JOIN licence ON product.licence_id = licence.licence_id"
     );
     return rows;
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 function paginate(products, page, pageSize) {
@@ -32,15 +35,17 @@ const getProductById = async (id) => {
     category ON product.category_id = category.category_id
     LEFT JOIN
     licence ON product.licence_id = licence.licence_id
-    WHERE
-    product.product_id = ?;`,
-      [id]
+    WHERE ?;`,
+    id
     );
-    return rows[0];
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+    return rows;
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 const getLastProducts = async () => {
@@ -57,10 +62,13 @@ const getLastProducts = async () => {
        ASC LIMIT 6`
     );
     return rows;
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 const getTotalQuantity = async () => {
@@ -69,10 +77,13 @@ const getTotalQuantity = async () => {
       "SELECT COUNT(product_id) AS product_quantity FROM product;"
     );
     return cant[0].product_quantity;
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 const getShopProducts = async (page, itemsPerPage) => {
@@ -86,10 +97,13 @@ const getShopProducts = async (page, itemsPerPage) => {
     const [rows] = await conn.query(query);
 
     return rows;
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 const relatedProducts = async (license) => {
@@ -108,10 +122,13 @@ const relatedProducts = async (license) => {
       [license]
     );
     return rows;
-  } catch (error) {
-    throw error;
-  } finally {
-    conn.releaseConnection();
+  }catch(error){
+    return{
+      error: true,
+      message: "Hemos encontrado un error: " + error
+    }
+  }finally{
+    conn.releaseConnection()
   }
 };
 const createProduct = async (params)=>{
