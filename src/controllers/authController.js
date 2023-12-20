@@ -49,6 +49,6 @@ module.exports = {
   },
   logout: async (req, res) => {
     req.session.isLogged = false;
-    res.render(path.resolve(__dirname, "../views/auth/logout.ejs"));
+    res.send("Sesión cerrada");
   },
 };
