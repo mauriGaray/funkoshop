@@ -18,7 +18,8 @@
             <div>
               Categoría:
               <select name="category" class="create_form_ul--select">
-                <option value="1" selected>Figuras Coleccionables</option>
+                <option value="" disabled selected hidden>Seleccionar</option>
+                <option value="1">Figuras Coleccionables</option>
                 <option value="2">Llaveros</option>
                 <option value="3">Remeras</option>
               </select>
@@ -26,7 +27,8 @@
             <div>
               Licencia:
               <select name="licence" class="create_form_ul--select">
-                <option value="1" selected>Pokemon</option>
+                <option value="" disabled selected hidden>Seleccionar</option>
+                <option value="1">Pokemon</option>
                 <option value="2">Star Wars</option>
                 <option value="3">Harry Potter</option>
               </select>
@@ -36,13 +38,13 @@
             <label for="productData">Nombre del producto: </label>
             <input
               type="text"
-              name="productData"
+              name="name"
               placeholder="Kakashi Hatake Shippuden Saga"
               class="create__form--line" />
           </li>
           <li class="create__form__ul__li--typography">
             <textarea
-              name="productData"
+              name="description"
               rows="12.2rem"
               cols="69rem"
               placeholder=" Descripción del producto"></textarea>
@@ -63,7 +65,7 @@
               <input
                 size="5rem"
                 type="text"
-                name="precio"
+                name="price"
                 placeholder="$0.000,00"
                 class="create__form--line" />
             </div>
@@ -84,7 +86,7 @@
               <input
                 type="number"
                 id="descount"
-                name="descount"
+                name="discount"
                 min="0"
                 max="100"
                 placeholder="0%"
@@ -93,14 +95,14 @@
             </div>
             <div>
               Cuotas:
-              <select name="cuotas" class="create__form__ul--select">
-                <option value="value0">Sin cuotas</option>
-                <option value="value3">3 cuotas sin interés</option>
-                <option value="value6">6 cuotas sin interés</option>
-                <option value="value9">9 cuotas sin interés</option>
-                <option value="value12">12 cuotas sin interés</option>
-                <option value="value18">18 cuotas sin interés</option>
-                <option value="value24">24 cuotas sin interés</option>
+              <select name="dues" class="create__form__ul--select">
+                <option value="0">Sin cuotas</option>
+                <option value="3">3 cuotas sin interés</option>
+                <option value="6">6 cuotas sin interés</option>
+                <option value="9">9 cuotas sin interés</option>
+                <option value="12">12 cuotas sin interés</option>
+                <option value="18">18 cuotas sin interés</option>
+                <option value="24">24 cuotas sin interés</option>
               </select>
             </div>
           </li>

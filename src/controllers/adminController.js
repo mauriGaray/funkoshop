@@ -20,13 +20,16 @@ module.exports = {
       discount: Number(req.body.discount),
       sku: req.body.sku,      
       dues: Number(req.body.dues),
-      img_front: req.files[0].originalname,
-      img_back: req.files[1].originalname,
+      image_front: req.files[0].originalname,
+      image_back: req.files[1].originalname,
       category_id: Number(req.body.category),
       licence_id: Number(req.body.licence)
     }
+    /*console.log(product_schema)*/
     /*const result = */await models.createProduct([Object.values(product_schema)]);
-    /*res.render("Esta es la Ruta para agregar un Nuevo ITEM" + result);*/
+    /*res.render("Esta es la Ruta para agregar un Nuevo ITEM" + result);
+    console.log([Object.values(product_schema)])
+    console.log(result)*/
     res.redirect("/admin");
   },
   getEditProduct: async (req, res) => {
