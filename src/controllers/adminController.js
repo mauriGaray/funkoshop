@@ -20,8 +20,8 @@ module.exports = {
       discount: Number(req.body.discount),
       sku: req.body.sku,      
       dues: Number(req.body.dues),
-      image_front: req.files[0].originalname,
-      image_back: req.files[1].originalname,
+      image_front: /*"/products/"+*/req.files[0].filename,
+      image_back: /*"/products/"+*/req.files[1].filename,
       category_id: Number(req.body.category),
       licence_id: Number(req.body.licence)
     }
@@ -33,16 +33,48 @@ module.exports = {
     res.redirect("/admin");
   },
   getEditProduct: async (req, res) => {
-    const itemId = req.params.id;
-    const [product] = await models.getProductById(itemId);
+    const {id} = req.params;
+    const [product] = await models.getProductById({product_id: id});
     res.render(path.resolve(__dirname, "../views/admin/editarItem.ejs"),{
       product
     });
   },
   putEditProduct: async (req, res) => {
-    res.render('<h1>Producto editado</h1><a href="/admin">Volver</a>');
+    const {id} = req.params;
+    const haveImages = req.files.length !== 0;
+    const product_schema = haveImages
+    ? {
+      product_name: req.body.name,
+      product_description: req.body.description,
+      price: Number(req.body.price),
+      stock: Number(req.body.stock),
+      discount: Number(req.body.discount),
+      sku: req.body.sku,      
+      dues: Number(req.body.dues),
+      image_front: /*"/products/"+*/req.files[0].filename,
+      image_back: /*"/products/"+*/req.files[1].filename,
+      category_id: Number(req.body.category),
+      licence_id: Number(req.body.licence)
+    }
+    : {
+      product_name: req.body.name,
+      product_description: req.body.description,
+      price: Number(req.body.price),
+      stock: Number(req.body.stock),
+      discount: Number(req.body.discount),
+      sku: req.body.sku,      
+      dues: Number(req.body.dues),
+      category_id: Number(req.body.category),
+      licence_id: Number(req.body.licence)
+    };
+    await models.editProduct(product_schema, {product_id: id});
+    /*console.log(product_schema)*/
+    res.redirect("/admin");
   },
   deleteProduct: async (req, res) => {
-    res.render('<h1>Producto eliminado</h1><a href="/admin">Volver</a>');
+    const {id} = req.params;
+    await models.deleteProduct({product_id: id});
+    /*res.render('<h1>Producto eliminado</h1><a href="/admin">Volver</a>');*/
+    res.redirect("/admin");
   },
 };

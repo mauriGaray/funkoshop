@@ -1025,6 +1025,14 @@ nav {
   margin-bottom: 3.6rem;
 }
 
+.admin__table button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
 .admin__table__tit {
   font-size: 4.2em;
 }

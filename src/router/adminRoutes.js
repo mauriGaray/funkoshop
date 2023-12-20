@@ -11,6 +11,6 @@ router.get("/", mainController.admin);
 router.get("/create", mainController.createProducts);
 router.post("/create", upload.array("images", 2), mainController.postProduct);
 router.get("/edit/:id", mainController.getEditProduct);
-router.put("/edit/:id", mainController.putEditProduct);
+router.put("/edit/:id", upload.array("images", 2), mainController.putEditProduct);
 router.delete("/delete/:id", mainController.deleteProduct);
 module.exports = router; // me olvidé de exportar el router en cada unas de las rutas. Me da error 'TypeError: Router.use() requires middleware function but got a Object'

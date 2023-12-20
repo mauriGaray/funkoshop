@@ -41,12 +41,14 @@
               <td><%= product.product_id %></td>
               <td><%= product.sku %></td>
               <td><%= product.product_name %></td>
-              <td><%= product.product_category %></td>
-              <td><a href="/admin/edit/<%= product.product_id %>"><iconify-icon icon="mdi:pencil" class="admin_table_td--icon_pencil"></iconify-icon> </iconify-icon></a></td>
-              <td><iconify-icon icon="iconamoon:trash-fill" class="admin_table_td--icon_trash"></iconify-icon></td>
+              <td><%= product.licence_name %></td>
+              <td><a href="/admin/edit/<%= product.product_id %>"><iconify-icon icon="mdi:pencil" style="color: #1d84b5" class="admin_table_td--icon_pencil"></iconify-icon></a></td>
+              <td><form action="/admin/delete/<%= product.product_id %>?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
+                <button type="submit"><iconify-icon icon="iconamoon:trash-fill" style="color: #ff3333" class="admin_table_td--icon_trash"></iconify-icon></button>
+              </form></td>
             </tr>
           <% }) %>
-          <!--<tr>
+          <!--<tr>            
             <td>2</td>
             <td>STW001002</td>
             <td>Boba Fett Fighter</td>

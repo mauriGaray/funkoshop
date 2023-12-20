@@ -9,48 +9,48 @@
   <body>
     <%- include('../partials/header.ejs') %>
     <main class="container">
-      <form action="submit" class="create__form">
+      <form action="/admin/edit/<%= product.product_id %>?_method=PUT" method="POST" class="create__form" enctype="multipart/form-data">
         <ul class="create__form__ul">
           <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
               Categoría:
-              <select name="select" class="create_form_ul--select">
+              <select name="category" class="create_form_ul--select">
                 <% if(product.category_id == 1){ %>
-                  <option value="value1" selected>Figuras Coleccionables</option>
-                  <option value="value2" >Remeras</option>
-                  <option value="value3">LLaveros</option>
+                  <option value="1" selected>Figuras Coleccionables</option>
+                  <option value="2">Remeras</option>
+                  <option value="3">LLaveros</option>
                 <% } %>
                 <% if(product.category_id == 2){ %>
-                  <option value="value1" >Figuras Coleccionables</option>
-                  <option value="value2" selected>Remeras</option>
-                  <option value="value3">LLaveros</option>
+                  <option value="1">Figuras Coleccionables</option>
+                  <option value="2" selected>Remeras</option>
+                  <option value="3">LLaveros</option>
                 <% } %>
                 <% if(product.category_id == 3){ %>
-                  <option value="value1" >Figuras Coleccionables</option>
-                  <option value="value2" >Remeras</option>
-                  <option value="value3" seelcted>LLaveros</option>
+                  <option value="1">Figuras Coleccionables</option>
+                  <option value="2">Remeras</option>
+                  <option value="3" selected>LLaveros</option>
                 <% } %>
               </select>
             </div>
             <div>
               Licencia:
-              <select name="select" class="create_form_ul--select">
+              <select name="licence" class="create_form_ul--select">
                 <% if(product.licence_id == 1){ %>
-                  <option value="value1" selected>Harry Potter</option>
-                  <option value="value2" >Star Wars</option>
-                  <option value="value3">Pokemon</option>
+                  <option value="1" selected>Pokemon</option>
+                  <option value="2">Star Wars</option>
+                  <option value="3">Harry Potter</option>
                 <% } %>
                 <% if(product.licence_id == 2){ %>
-                  <option value="value1" >Harry Potter</option>
-                  <option value="value2" selected>Star Wars</option>
-                  <option value="value3">Pokemon</option>
+                  <option value="1">Harry Potter</option>
+                  <option value="2" selected>Star Wars</option>
+                  <option value="3">Pokemon</option>
                 <% } %>
                 <% if(product.licence_id == 3){ %>
-                  <option value="value1" >Harry Potter</option>
-                  <option value="value2" >Star Wars</option>
-                  <option value="value3" selected>Pokemon</option>
+                  <option value="1">Pokemon</option>
+                  <option value="2">Star Wars</option>
+                  <option value="3" selected>Harry Potter</option>
                 <% } %>
               </select>
             </div>
@@ -59,16 +59,16 @@
             <label for="productData">Nombre del producto: </label>
             <input
               type="text"
-              name="productData"
-              value="<% product.product_name %>"
+              name="name"
+              value="<%= product.product_name %>"
               class="create__form--line" />
           </li>
           <li class="create__form__ul__li--typography">
             <textarea
-              name="productData"
+              name="description"
               rows="12.2rem"
               cols="69rem"
-              value=""><% product.product_description %></textarea>
+              value=""><%= product.product_description %></textarea>
           </li>
           <li
             class="create__form__ul__li--typography create__form__ul__li__div2">
@@ -78,16 +78,16 @@
                 size="9rem"
                 type="text"
                 name="sku"
-                value="<% product.sku %>"
+                value="<%= product.sku %>"
                 class="create__form--line" />
             </div>
             <div>
-              <label for="precio">Precio:</label>
+              <label for="precio">Precio: $</label>
               <input
                 size="5rem"
                 type="text"
-                name="precio"
-                value="$<% product.price %>"
+                name="price"
+                value="<%= product.price %>"
                 class="create__form--line" />
             </div>
             <div>
@@ -96,7 +96,7 @@
                 size="5rem"
                 type="text"
                 name="stock"
-                value="$<% product.stock %>"
+                value="<%= product.stock %>"
                 class="create__form--line" />
             </div>
           </li>
@@ -107,38 +107,38 @@
               <input
                 type="number"
                 id="descount"
-                name="descount"
+                name="discount"
                 min="0"
                 max="100"
-                value="$<% product.discount %>"
+                value="<%= product.discount %>"
                 size="5rem"
                 class="create__form--line" />
             </div>
             <div>
               Cuotas:
-              <select name="cuotas" class="create__form__ul--select">
-                <option value="value0">Sin cuotas</option>
-                <option value="value3">3 cuotas sin interés</option>
-                <option value="value6">6 cuotas sin interés</option>
-                <option value="value9">9 cuotas sin interés</option>
-                <option value="value12">12 cuotas sin interés</option>
-                <option value="value18">18 cuotas sin interés</option>
-                <option value="value24">24 cuotas sin interés</option>
+              <select name="dues" class="create__form__ul--select">
+                <option value="0">Sin cuotas</option>
+                <option value="3">3 cuotas sin interés</option>
+                <option value="6">6 cuotas sin interés</option>
+                <option value="9">9 cuotas sin interés</option>
+                <option value="12">12 cuotas sin interés</option>
+                <option value="18">18 cuotas sin interés</option>
+                <option value="24">24 cuotas sin interés</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="image">Imágenes:</label> <input type="file" />
+            <label for="image">Imágenes:</label> <input type="file" name="images" multiple/>
           </li>
 
           <li>
             <img
               class="editaritem__ul__li__img"
-              src="/img/<% product.img_front %>"
+              src="/img/<%= product.image_front %>"
               alt="pokemon" />
             <img
               class="editaritem__ul__li__img"
-              src="/img/<% product.img_back %>"
+              src="/img/<%= product.image_back %>"
               alt="pokemon" />
           </li>
           <button

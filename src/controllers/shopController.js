@@ -29,8 +29,8 @@ module.exports = {
   },
 
   productDetail: async (req, res) => {
-    const id = req.params.id;
-    const product = await getProductById(id);
+    const {id} = req.params;
+    const [product] = await getProductById({product_id: id});
     let license = product.licence_name;
     const relatedData = await relatedProducts(license);
     res.render(path.resolve(__dirname, "../views/shop/item.ejs"), {
