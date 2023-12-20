@@ -618,6 +618,12 @@ nav {
 }
 /* Editar item */
 
+.admin__table button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
 .editaritem__ul__li__img {
   width: 9.375rem;
   height: 9.375rem;

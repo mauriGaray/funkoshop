@@ -142,24 +142,19 @@ const createProduct = async (product) => {
 };
 const editProduct = async (params, id) => {
   try {
-    const [rows] = await conn.query("UPDATE product SET ? WHERE ?;", [
+    /*console.log(params);
+    console.log(id);*/
+    const [product] = await conn.query("UPDATE product SET ? WHERE ? ", [
       params,
       id,
     ]);
-    const response = {
-      isError: false,
-      message: `El item fue modificado exitosamente.`,
-      status: rows,
+    /*console.log(product);*/
+    return product;
+  } catch (error) {
+    return {
+      error: true,
+      message: "Hemos encontrado un error: " + error,
     };
-
-    return response;
-  } catch (e) {
-    const error = {
-      isError: true,
-      message: `No pudimos modificar el item seleccionado, error: ${e}`,
-    };
-
-    return error;
   } finally {
     conn.releaseConnection();
   }
@@ -196,4 +191,5 @@ module.exports = {
   getTotalQuantity,
   createProduct,
   deleteProduct,
+  editProduct,
 };
