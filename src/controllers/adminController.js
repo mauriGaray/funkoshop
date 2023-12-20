@@ -28,8 +28,8 @@ module.exports = {
       discount: Number(req.body.discount),
       sku: req.body.sku,
       dues: Number(req.body.dues),
-      image_front: req.files[0].filename,
-      image_back: req.files[1].filename,
+      image_front: "imagesProduct1",
+      image_back: "imagesProduct2",
       licence_id: Number(req.body.licence),
       category_id: Number(req.body.category),
     };
@@ -55,8 +55,8 @@ module.exports = {
           discount: Number(req.body.discount),
           sku: req.body.sku,
           dues: Number(req.body.dues),
-          image_front: /*"/products/"+*/ req.files[0].filename,
-          image_back: /*"/products/"+*/ req.files[1].filename,
+          image_front: "imagesProduct1",
+          image_back: "imagesProduct2",
           category_id: Number(req.body.category),
           licence_id: Number(req.body.licence),
         }
