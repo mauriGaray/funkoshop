@@ -28,8 +28,8 @@ module.exports = {
       discount: Number(req.body.discount),
       sku: req.body.sku,
       dues: Number(req.body.dues),
-      image_front: "imagesProduct1",
-      image_back: "imagesProduct2",
+      image_front: "/" + req.files[0].filename,
+      image_back: "/" + req.files[1].filename,
       licence_id: Number(req.body.licence),
       category_id: Number(req.body.category),
     };
