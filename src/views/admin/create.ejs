@@ -10,43 +10,44 @@
     <%- include('../partials/header.ejs') %>
 
     <main class="container">
+      <h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1>
       <form
         action="/admin/create"
         enctype="multipart/form-data"
         method="post"
         class="create__form">
         <ul class="create__form__ul">
-          <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
               Categoría:
-              <select name="select" class="create__form__ul--select">
-                <option value="funko" selected>Funko</option>
-                <option value="remera">Remera</option>
-                <option value="llavero">Llavero</option>
+              <select name="category" class="create__form__ul--select">
+                <option value="1" selected>Figuras Coleccionables</option>
+                <option value="2">Llaveros</option>
+                <option value="3">Remeras</option>
               </select>
             </div>
+
             <div>
               Licencia:
-              <select name="select" class="create__form__ul--select">
-                <option value="stars wars">Stars Wars</option>
-                <option value="pokemon" selected>Pokemon</option>
-                <option value="harry potter">Harry Potter</option>
+              <select name="licence" class="create__form__ul--select">
+                <option value="2">Stars Wars</option>
+                <option value="1" selected>Pokemon</option>
+                <option value="3">Harry Potter</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="productData">Nombre del producto: </label>
+            <label for="name">Nombre del producto: </label>
             <input
               type="text"
-              name="productData"
+              name="name"
               placeholder="Kakashi Hatake Shippuden Saga"
               class="create__form--line" />
           </li>
           <li class="create__form__ul__li--typography">
             <textarea
-              name="productData"
+              name="description"
               rows="12.2rem"
               cols="69rem"
               placeholder=" Descripción del producto"></textarea>
@@ -63,11 +64,11 @@
                 class="create__form--line" />
             </div>
             <div>
-              <label for="precio">Precio:</label>
+              <label for="price">Precio:</label>
               <input
                 size="5rem"
                 type="text"
-                name="precio"
+                name="price"
                 placeholder="$0.000,00"
                 class="create__form--line" />
             </div>
@@ -84,11 +85,11 @@
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
-              <label for="descount">Descuento:</label>
+              <label for="discount">Descuento:</label>
               <input
                 type="number"
-                id="descount"
-                name="descount"
+                id="discount"
+                name="discount"
                 min="0"
                 max="100"
                 placeholder="0%"
@@ -97,16 +98,20 @@
             </div>
             <div>
               Cuotas:
-              <select name="cuotas" class="create__form__ul--select">
-                <option value="3">3 cuotas sin interés</option>
-                <option value="6" selected>6 cuotas sin interés</option>
-                <option value="12">12 cuotas sin interés</option>
+              <select class="create__form__ul--select" name="dues" id="dues">
+                <option value="0">Sin cuotas</option>
+                <option value="3">3 cuotas s/ interés</option>
+                <option value="6">6 cuotas s/ interés</option>
+                <option value="9">9 cuotas s/ interés</option>
+                <option value="12">12 cuotas s/ interés</option>
+                <option value="18">18 cuotas s/ interés</option>
+                <option value="24">24 cuotas s/ interés</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
             <label for="image">Imágenes:</label>
-            <input type="file" name="image" id="imageFiles" multiple />
+            <input type="file" name="images" id="img" multiple />
             <div id="previewContainer"></div>
           </li>
         </ul>
@@ -130,7 +135,7 @@
     <script>
       // Función para mostrar la vista previa de las imágenes seleccionadas
       function previewImages() {
-        const fileInput = document.getElementById("imageFiles");
+        const fileInput = document.getElementById("img");
         const previewContainer = document.getElementById("previewContainer");
 
         previewContainer.innerHTML = ""; // Limpiar la vista previa
@@ -147,7 +152,7 @@
       }
 
       // Asociar la función a un cambio en el input de archivos
-      const fileInput = document.getElementById("imageFiles");
+      const fileInput = document.getElementById("img");
       fileInput.addEventListener("change", previewImages);
     </script>
   </body>

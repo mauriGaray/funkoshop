@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 const getAllProducts = async () => {
   try {
     const [rows] = await conn.query(
-      "SELECT product.*, category.category_name, licence.licence_name FROM (product LEFT JOIN category ON category.category_id) LEFT JOIN licence ON product.licence_id = licence.licence_id"
+      "SELECT product.*, category.category_name, licence.licence_name FROM (product LEFT JOIN category ON product.category_id = category.category_id) LEFT JOIN licence ON product.licence_id = licence.licence_id"
     );
     return rows;
   } catch (error) {
@@ -114,6 +114,32 @@ const relatedProducts = async (license) => {
     conn.releaseConnection();
   }
 };
+const createProduct = async (product) => {
+  try {
+    const dateNow = Date.now();
+    const [rows] = await conn.query(
+      `INSERT INTO product (product_name, product_description, price, stock, discount, sku, dues,create_time, image_front, image_back, licence_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+      [
+        product.product_name,
+        product.product_description,
+        product.price,
+        product.stock,
+        product.discount,
+        product.sku,
+        product.dues,
+        product.image_front,
+        product.image_back,
+        dateNow,
+        product.licence_id,
+        product.category_id,
+      ]
+    );
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
 
 module.exports = {
   getAllProducts,
@@ -123,4 +149,5 @@ module.exports = {
   relatedProducts,
   paginate,
   getTotalQuantity,
+  createProduct,
 };

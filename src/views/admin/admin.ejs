@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../css/index.css" />
     <title>Admin</title>
     <link rel="stylesheet" href="/css/index.css" />
@@ -12,19 +12,28 @@
 
     <main class="container">
       <div class="admin__buscar">
-        <img src="../../img/icons/search_icon.svg" alt="">
-        <form action=""><input type="text" id="buscar" name="buscar" placeholder="Código, nombre o categoría"></form>
+        <img src="../../img/icons/search_icon.svg" alt="" />
+        <form action="">
+          <input
+            type="text"
+            id="buscar"
+            name="buscar"
+            placeholder="Código, nombre o categoría" />
+        </form>
       </div>
-            
-    
-        <div class="admin__table__cab">
-          <h3 class="admin__table__tit">LISTADO DE PRODUCTOS</h3>
-          <div class="admin__table__agregar"><h3 class="">AGREGAR</h3 >
-            <iconify-icon icon="ph:plus-fill" class="admin__table__icon--plus"></iconify-icon></div>
 
-        </div>
-        
-        <table class="admin__table"> 
+      <div class="admin__table__cab">
+        <h3 class="admin__table__tit">LISTADO DE PRODUCTOS</h3>
+        <a href="/admin/create"
+          ><div class="admin__table__agregar">
+            <h3 class="">AGREGAR</h3>
+            <iconify-icon
+              icon="ph:plus-fill"
+              class="admin__table__icon--plus"></iconify-icon></div
+        ></a>
+      </div>
+
+      <table class="admin__table">
         <thead>
           <tr>
             <th>ID</th>
@@ -36,115 +45,33 @@
           </tr>
         </thead>
         <tbody>
+          <% products.forEach(product => { %>
           <tr>
-            <td>1</td>
-            <td>STW001001</td>
-            <td>Baby Yoda Blueball</td>
-            <td>STARS WARS</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
+            <td><%= product.product_id %></td>
+            <td><%= product.sku %></td>
+            <td><%= product.product_name %></td>
+            <td><%= product.category_name%></td>
+            <td>
+              <a href="/admin/edit/<%= product.product_id %>">
+                <iconify-icon
+                  icon="mdi:pencil"
+                  class="admin__table__td--icon_pencil"></iconify-icon>
+              </a>
+            </td>
+            <td>
+              <a href="/admin/delete/<%= product.product_id %>">
+                <iconify-icon
+                  icon="iconamoon:trash-fill"
+                  class="admin__table__td--icon_trash"></iconify-icon>
+              </a>
+            </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>STW001002</td>
-            <td>Boba Fett Fighter</td>
-            <td>STARS WARS</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>STW001003</td>
-            <td>Luke Skywalker & Grogu</td>
-            <td>STARS WARS</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>STW001004</td>
-            <td>Stormtrooper Lightsaber</td>
-            <td>STARS WARS</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>PKM001001</td>
-            <td>Charmander Smiler</td>
-            <td>POKEMON</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>PKM001002</td>
-            <td>Dragonite Hi!</td>
-            <td>POKEMON</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>PKM001003</td>
-            <td>Pidgeotto Flying</td>
-            <td>POKEMON</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>PKM001004</td>
-            <td>Pikachu Smiley</td>
-            <td>POKEMON</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>PKM001005</td>
-            <td>Vulpix Fancy</td>
-            <td>POKEMON</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>HPT001001</td>
-            <td>Harry Potter & Hegwid</td>
-            <td>HARRY POTTER</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>HPT001002</td>
-            <td>Herminione Ball Dress</td>
-            <td>HARRY POTTER</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>HPT001003</td>
-            <td>Luna Lovegood Lion Mask</td>
-            <td>HARRY POTTER</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>HPT001004</td>
-            <td>Snape Patronus</td>
-            <td>HARRY POTTER</td>
-            <td><iconify-icon icon="mdi:pencil" class="admin__table__td--icon_pencil"></iconify-icon> </iconify-icon></td>
-            <td><iconify-icon icon="iconamoon:trash-fill" class="admin__table__td--icon_trash"></iconify-icon></td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </main>
 
-   <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
   </body>
 </html>

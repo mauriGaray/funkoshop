@@ -9,25 +9,15 @@ const {
   deleteProduct,
 } = require("../controllers/adminController");
 const { isLogged } = require("../middlewares/auth/isLogged");
-const path = require("path");
-const multer = require("multer");
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.resolve(__dirname, "../../public/img"));
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "_" + file.originalname);
-  },
-});
+const { uploadFile } = require("../utils/uploadFiles");
 
 router.use(isLogged);
-const uploadFile = multer({ storage });
+
 // Routes
 
 router.get("/", admin);
 router.get("/create", createProducts);
-router.post("/create", uploadFile.array("image", 2), postProduct);
+router.post("/create", uploadFile.array("images", 2), postProduct);
 router.get("/edit/:id", getEditProduct);
 router.put("/edit/:id", putEditProduct);
 router.delete("/delete/:id", deleteProduct);
