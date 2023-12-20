@@ -46,11 +46,28 @@
         </thead>
         <tbody>
           <% products.forEach(product => { %>
+          <a href="/shop/item/<%= product.product_id %>"></a>
           <tr>
-            <td><%= product.product_id %></td>
-            <td><%= product.sku %></td>
-            <td><%= product.product_name %></td>
-            <td><%= product.category_name%></td>
+            <td>
+              <a href="/shop/item/<%= product.product_id %>"
+                ><%= product.product_id %></a
+              >
+            </td>
+            <td>
+              <a href="/shop/item/<%= product.product_id %>"
+                ><%= product.sku %></a
+              >
+            </td>
+            <td>
+              <a href="/shop/item/<%= product.product_id %>"
+                ><%= product.product_name %></a
+              >
+            </td>
+            <td>
+              <a href="/shop/item/<%= product.product_id %>"
+                ><%= product.category_name%></a
+              >
+            </td>
             <td>
               <a href="/admin/edit/<%= product.product_id %>">
                 <iconify-icon
