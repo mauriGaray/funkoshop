@@ -1,5 +1,5 @@
 const path = require("path");
-const models = require("../models/db/products.model.js");
+const { createProduct } = require("../models/db/products.model.js");
 const connection = require("../models/config/conn.js");
 module.exports = {
   admin: async (req, res) => {
@@ -9,7 +9,8 @@ module.exports = {
     res.render(path.resolve(__dirname, "../views/admin/create.ejs"));
   },
   postProduct: async (req, res) => {
-    res.render('<h1>Producto creado</h1><a href="/admin">Volver</a>');
+    const data = req.body;
+    const file = req.file;
   },
   getEditProduct: async (req, res) => {
     res.render(path.resolve(__dirname, "../views/admin/editarItem.ejs"));

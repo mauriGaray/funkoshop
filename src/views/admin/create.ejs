@@ -10,7 +10,11 @@
     <%- include('../partials/header.ejs') %>
 
     <main class="container">
-      <form action="submit" class="create__form">
+      <form
+        action="/admin/create"
+        enctype="multipart/form-data"
+        method="post"
+        class="create__form">
         <ul class="create__form__ul">
           <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
           <li
@@ -18,17 +22,17 @@
             <div>
               Categoría:
               <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+                <option value="funko" selected>Funko</option>
+                <option value="remera">Remera</option>
+                <option value="llavero">Llavero</option>
               </select>
             </div>
             <div>
               Licencia:
               <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+                <option value="stars wars">Stars Wars</option>
+                <option value="pokemon" selected>Pokemon</option>
+                <option value="harry potter">Harry Potter</option>
               </select>
             </div>
           </li>
@@ -94,14 +98,16 @@
             <div>
               Cuotas:
               <select name="cuotas" class="create__form__ul--select">
-                <option value="value1">3 cuotas sin interés</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+                <option value="3">3 cuotas sin interés</option>
+                <option value="6" selected>6 cuotas sin interés</option>
+                <option value="12">12 cuotas sin interés</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="image">Imágenes:</label> <input type="file" />
+            <label for="image">Imágenes:</label>
+            <input type="file" name="image" id="imageFiles" multiple />
+            <div id="previewContainer"></div>
           </li>
         </ul>
         <button
@@ -119,7 +125,30 @@
       </form>
     </main>
 
- <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script>
+      // Función para mostrar la vista previa de las imágenes seleccionadas
+      function previewImages() {
+        const fileInput = document.getElementById("imageFiles");
+        const previewContainer = document.getElementById("previewContainer");
+
+        previewContainer.innerHTML = ""; // Limpiar la vista previa
+
+        // Iterar sobre los archivos seleccionados
+        for (const file of fileInput.files) {
+          // Crear una miniatura y agregarla a la vista previa
+          const thumbnail = document.createElement("img");
+          thumbnail.src = URL.createObjectURL(file);
+          thumbnail.alt = "Vista previa";
+          thumbnail.style.maxWidth = "10rem"; // Ajustar el tamaño según sea necesario
+          previewContainer.appendChild(thumbnail);
+        }
+      }
+
+      // Asociar la función a un cambio en el input de archivos
+      const fileInput = document.getElementById("imageFiles");
+      fileInput.addEventListener("change", previewImages);
+    </script>
   </body>
 </html>

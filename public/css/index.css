@@ -607,6 +607,15 @@ nav {
   letter-spacing: 0.06rem;
   border: none;
 }
+#previewContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow: auto;
+  flex-direction: row;
+  max-width: 20vw;
+}
 /* Editar item */
 
 .editaritem__ul__li__img {
