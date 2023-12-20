@@ -4,44 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/index.css" />
-    <title>Editar item</title>
+    <title>Crear item</title>
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
+
     <main class="container">
-      <form action="submit" class="create__form">
+      <h1 class="create__form__ul--h1">EDITAR ITEM</h1>
+      <form
+        action="/admin/edit/<%= productId %>?_method=PUT"
+        enctype="multipart/form-data"
+        method="POST"
+        class="create__form">
         <ul class="create__form__ul">
-          <li><h1 class="create__form__ul--h1">CREAR NUEVO ITEM</h1></li>
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
               Categoría:
-              <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+              <select name="category" class="create__form__ul--select">
+                <option value="1" selected>Figuras Coleccionables</option>
+                <option value="2">Llaveros</option>
+                <option value="3">Remeras</option>
               </select>
             </div>
+
             <div>
               Licencia:
-              <select name="select" class="create__form__ul--select">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+              <select name="licence" class="create__form__ul--select">
+                <option value="2">Stars Wars</option>
+                <option value="1" selected>Pokemon</option>
+                <option value="3">Harry Potter</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="productData">Nombre del producto: </label>
+            <label for="name">Nombre del producto: </label>
             <input
               type="text"
-              name="productData"
+              name="name"
               placeholder="Kakashi Hatake Shippuden Saga"
               class="create__form--line" />
           </li>
           <li class="create__form__ul__li--typography">
             <textarea
-              name="productData"
+              name="description"
               rows="12.2rem"
               cols="69rem"
               placeholder=" Descripción del producto"></textarea>
@@ -58,11 +64,11 @@
                 class="create__form--line" />
             </div>
             <div>
-              <label for="precio">Precio:</label>
+              <label for="price">Precio:</label>
               <input
                 size="5rem"
                 type="text"
-                name="precio"
+                name="price"
                 placeholder="$0.000,00"
                 class="create__form--line" />
             </div>
@@ -79,11 +85,11 @@
           <li
             class="create__form__ul__li--typography create__form__ul__li__div">
             <div>
-              <label for="descount">Descuento:</label>
+              <label for="discount">Descuento:</label>
               <input
                 type="number"
-                id="descount"
-                name="descount"
+                id="discount"
+                name="discount"
                 min="0"
                 max="100"
                 placeholder="0%"
@@ -92,37 +98,62 @@
             </div>
             <div>
               Cuotas:
-              <select name="cuotas" class="create__form__ul--select">
-                <option value="value1">3 cuotas sin interés</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
+              <select class="create__form__ul--select" name="dues" id="dues">
+                <option value="0">Sin cuotas</option>
+                <option value="3">3 cuotas s/ interés</option>
+                <option value="6">6 cuotas s/ interés</option>
+                <option value="9">9 cuotas s/ interés</option>
+                <option value="12">12 cuotas s/ interés</option>
+                <option value="18">18 cuotas s/ interés</option>
+                <option value="24">24 cuotas s/ interés</option>
               </select>
             </div>
           </li>
           <li class="create__form__ul__li--typography">
-            <label for="image">Imágenes:</label> <input type="file" />
+            <label for="image">Imágenes:</label>
+            <input type="file" name="images" id="img" multiple />
+            <div id="previewContainer"></div>
           </li>
-
-          <li>
-            <img
-              class="editaritem__ul__li__img"
-              src="../../img/pokemon/pidgeotto-1.webp"
-              alt="pokemon" />
-            <img
-              class="editaritem__ul__li__img"
-              src="../../img/pokemon/pidgeotto-box.webp"
-              alt="pokemon" />
-          </li>
-          <button
-            type="submit"
-            value="modifyProduct"
-            class="create__form--gap create__form--gap create__form--btn">
-            Modificar Producto
-          </button>
         </ul>
+        <button
+          class="create__form--gap create__form--btn"
+          type="submit"
+          value="addProduct">
+          Modificar
+        </button>
+        <button
+          class="create__form--gap create__form--gap create__form--btn"
+          type="reset"
+          value="clean">
+          Limpiar
+        </button>
       </form>
     </main>
+
     <%- include('../partials/footer.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script>
+      // Función para mostrar la vista previa de las imágenes seleccionadas
+      function previewImages() {
+        const fileInput = document.getElementById("img");
+        const previewContainer = document.getElementById("previewContainer");
+
+        previewContainer.innerHTML = ""; // Limpiar la vista previa
+
+        // Iterar sobre los archivos seleccionados
+        for (const file of fileInput.files) {
+          // Crear una miniatura y agregarla a la vista previa
+          const thumbnail = document.createElement("img");
+          thumbnail.src = URL.createObjectURL(file);
+          thumbnail.alt = "Vista previa";
+          thumbnail.style.maxWidth = "10rem"; // Ajustar el tamaño según sea necesario
+          previewContainer.appendChild(thumbnail);
+        }
+      }
+
+      // Asociar la función a un cambio en el input de archivos
+      const fileInput = document.getElementById("img");
+      fileInput.addEventListener("change", previewImages);
+    </script>
   </body>
 </html>

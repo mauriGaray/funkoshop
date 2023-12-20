@@ -140,6 +140,51 @@ const createProduct = async (product) => {
     conn.releaseConnection();
   }
 };
+const editProduct = async (params, id) => {
+  try {
+    const [rows] = await conn.query("UPDATE product SET ? WHERE ?;", [
+      params,
+      id,
+    ]);
+    const response = {
+      isError: false,
+      message: `El item fue modificado exitosamente.`,
+      status: rows,
+    };
+
+    return response;
+  } catch (e) {
+    const error = {
+      isError: true,
+      message: `No pudimos modificar el item seleccionado, error: ${e}`,
+    };
+
+    return error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
+const deleteProduct = async (params) => {
+  try {
+    const [product] = await conn.query("DELETE FROM product WHERE ?;", params);
+    const response = {
+      isError: false,
+      data: rows,
+      message: `Producto borrado exitosamente.`,
+    };
+
+    return response;
+  } catch (e) {
+    const error = {
+      isError: true,
+      message: `No pudimos insertar los valores seleccionados debido a : ${e}`,
+    };
+
+    return error;
+  } finally {
+    conn.releaseConnection();
+  }
+};
 
 module.exports = {
   getAllProducts,
@@ -150,4 +195,5 @@ module.exports = {
   paginate,
   getTotalQuantity,
   createProduct,
+  deleteProduct,
 };

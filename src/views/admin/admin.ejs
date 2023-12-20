@@ -59,11 +59,16 @@
               </a>
             </td>
             <td>
-              <a href="/admin/delete/<%= product.product_id %>">
-                <iconify-icon
-                  icon="iconamoon:trash-fill"
-                  class="admin__table__td--icon_trash"></iconify-icon>
-              </a>
+              <form
+                action="/admin/delete/<%= product.product_id %>?_method=DELETE"
+                method="POST"
+                enctype="application/x-www-form-urlencoded">
+                <button type="submit">
+                  <iconify-icon
+                    icon="iconamoon:trash-fill"
+                    class="admin__table__td--icon_trash"></iconify-icon>
+                </button>
+              </form>
             </td>
           </tr>
           <% }) %>
